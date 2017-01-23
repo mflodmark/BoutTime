@@ -32,16 +32,18 @@ class ViewController: UIViewController {
     var selectedStatement: String? = nil
     var selectedStatementAbove: String? = nil
     var selectedStatementBelow: String? = nil
-    
-    
-    // Arrays
+    let statements = Statements()
+   
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        roundedCorners()
+        
+
+        
+        setUpView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,9 +54,28 @@ class ViewController: UIViewController {
     
     // MARK: - Functions
     
+    func setUpView() {
+        roundedCorners()
+        addStatementToLabels()
+    }
+    
     func roundedCorners() {
         statement1.layer.cornerRadius = 5
+    }
+    
 
+    
+    func addStatementToLabels() {
+        // Arrays
+        let labelsArray = [statement1,statement2, statement3, statement4]
+
+        for label in labelsArray {
+            let randomStatement = Statements().randomStatement()
+            let statementText = "Player: \(randomStatement.player.rawValue) \nType: \(randomStatement.pointType) \nPoints: \(randomStatement.points) \nYear: \(randomStatement.year)"
+            label?.text = statementText
+            
+        }
+                
     }
 
     
@@ -68,7 +89,7 @@ class ViewController: UIViewController {
     }
     
     func showNonSelectedArrow(button: UIButton, imageNonSelected: UIImage) {
-                arrowDownStatement1.setBackgroundImage(imageNonSelected, for: UIControlState.normal)
+        arrowDownStatement1.setBackgroundImage(imageNonSelected, for: UIControlState.normal)
     }
     
     func moveLabels(newStatement1: String?, newStatement2: String?, newStatement3: String?, newStatement4: String?) {
@@ -79,6 +100,8 @@ class ViewController: UIViewController {
 
         
     }
+    
+
     
     func loadWithDelay(seconds: Int, button: UIButton, imageNonselected: UIImage) {
         
@@ -98,12 +121,14 @@ class ViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func arrowDownStatement1Action(_ sender: UIButton) {
+        // setup buttons
         imageButtonSelected = #imageLiteral(resourceName: "down_full_selected")
         imageButtonNonSelected = #imageLiteral(resourceName: "down_full")
+        
+        // setup statements
         selectedStatement = statement1.text
         selectedStatementBelow = statement2.text
         selectedStatementAbove = nil
-        
         
         // FIXME: fix unwrapping
         showSelectedArrow(button: sender, imageSelected: imageButtonSelected!, imageNonSelected: imageButtonNonSelected!)
