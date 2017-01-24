@@ -29,13 +29,17 @@ class ViewController: UIViewController {
     // Declarations
     var imageButtonSelected: UIImage? = nil
     var imageButtonNonSelected: UIImage? = nil
-    //var selectedStatement: String? = nil
-    //var selectedStatementAbove: String? = nil
-    //var selectedStatementBelow: String? = nil
     let statements = Statements()
-    //let timer = TimerCountdown()
     var timer = Timer()
+    
+    var checkedPoints: Bool = false
+    
     var timeRemaining: Int = 60
+    var points1: Int = 0
+    var points2: Int = 0
+    var points3: Int = 0
+    var points4: Int = 0
+
     
     
     override func viewDidLoad() {
@@ -57,10 +61,32 @@ class ViewController: UIViewController {
         roundedCorners()
         addStatementToLabels()
         timerStart()
+        buttonsIsEnabledTrue()
+        // Clear random array
+        statements.randomStatementArray.removeAll()
     }
     
     func roundedCorners() {
         statement1.layer.cornerRadius = 5
+    }
+    
+    
+    func buttonsIsEnabledFalse () {
+        // Unable buttons
+        let arrowButtonsArray = [arrowUpStatement2, arrowUpStatement3, arrowUpStatement4, arrowDownStatement1, arrowDownStatement2, arrowDownStatement3]
+        
+        for button in arrowButtonsArray {
+            button?.isEnabled = false
+        }
+    }
+    
+    func buttonsIsEnabledTrue () {
+        // Enable buttons
+        let arrowButtonsArray = [arrowUpStatement2, arrowUpStatement3, arrowUpStatement4, arrowDownStatement1, arrowDownStatement2, arrowDownStatement3]
+        
+        for button in arrowButtonsArray {
+            button?.isEnabled = true
+        }
     }
     
     func timerStart() {
@@ -78,6 +104,17 @@ class ViewController: UIViewController {
         if timeRemaining == 0 {
             // Must invalidate timer before starting a new round, otherwise it becomes a new timer all the time
             timer.invalidate()
+            nextRound.setTitle("", for: UIControlState.normal)
+
+            // Buttons can't be pressed
+            buttonsIsEnabledFalse()
+            
+            // Replace timer with image depending on correct answer or not
+            if checkedPoints == true {
+                nextRound.setBackgroundImage(#imageLiteral(resourceName: "next_round_success"), for: UIControlState.normal)
+            } else {
+                nextRound.setBackgroundImage(#imageLiteral(resourceName: "next_round_fail"), for: UIControlState.normal)
+            }
             
             //nextRound() -- add function for next round
         } else {
@@ -102,6 +139,14 @@ class ViewController: UIViewController {
             // Add statement to random statement array
             statements.randomStatementArray.append(randomStatement)
             
+            // Add points to "label"
+            //switch label {
+                //case statement1: points1 = randomStatement.points
+                //case statement2: points2 = randomStatement.points
+                //case statement3: points2 = randomStatement.points
+                //case statement4: points2 = randomStatement.points
+            //}
+            
             // Remove statement from original array
             //statements.statementsArray.remove(at: indexOfSelectedStatement)
             
@@ -111,18 +156,7 @@ class ViewController: UIViewController {
 
     
     func showSelectedArrow(button: UIButton, imageSelected: UIImage, imageNonSelected: UIImage) {
-        
-//        if button.isHighlighted == true {
-//            button.setBackgroundImage(imageSelected, for: UIControlState.normal)
-//        } else {
-//            button.setBackgroundImage(imageNonSelected, for: UIControlState.normal)
-//
-//        }
-        
-        //button.setBackgroundImage(imageSelected, for: UIControlState.normal)
-        
-        // Take back first image with delay
-        //loadWithDelay(seconds: 1, button: button, imageNonselected: imageNonSelected)
+
 
     }
     
@@ -130,23 +164,19 @@ class ViewController: UIViewController {
         arrowDownStatement1.setBackgroundImage(imageNonSelected, for: UIControlState.normal)
     }
     
-
-    
-
-    
-    func loadWithDelay(seconds: Int, button: UIButton, imageNonselected: UIImage) {
+    func checkPoints() -> Bool {
+        let array = statements.randomStatementArray
         
-        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
-        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
-        
-        // Calculates a time value to execute the method given current time and delay
-        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
-        
-        // Executes the method at the dispatch time on the main queue
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-            self.showNonSelectedArrow(button: button, imageNonSelected: imageNonselected)
+        if points1 == array[0].points && points2 == array[1].points && points3 == array[2].points && points4 == array[3].points {
+            checkedPoints = true
+        } else {
+            checkedPoints = false
         }
+
+        return checkedPoints
+
     }
+    
 
     
     // MARK: - Actions

@@ -74,8 +74,11 @@ class Statements {
         statementsArray.remove(at: index)
     }
     
-    func checkPointsOfRandomStatementArray() {
-        
+    func sortPointsOfRandomStatementArray() {
+        // Fix correct order of statement, largest point at index 0
+        randomStatementArray.sort { (one: StatementSetUp, two: StatementSetUp) -> Bool in
+            one.points < two.points
+        }
     }
 }
 
