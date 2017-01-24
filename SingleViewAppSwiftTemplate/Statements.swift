@@ -62,7 +62,6 @@ class Statements {
     
     func randomStatement() -> Int {
         let indexOfSelectedStatement = GKRandomSource.sharedRandom().nextInt(upperBound: statementsArray.count)
-        let statementDictionary = statementsArray[indexOfSelectedStatement]
         
         return indexOfSelectedStatement
     }

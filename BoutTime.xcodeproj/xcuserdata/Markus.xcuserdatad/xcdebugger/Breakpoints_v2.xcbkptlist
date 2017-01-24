@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SingleViewAppSwiftTemplate/ViewController.swift"
-            timestampString = "506844656.95767"
+            timestampString = "506976577.163609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SingleViewAppSwiftTemplate/Statements.swift"
-            timestampString = "506845984.45962"
+            timestampString = "506974380.320293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "statementsArray"
             landmarkType = "24">
             <Locations>
@@ -151,13 +151,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SingleViewAppSwiftTemplate/ViewController.swift"
-            timestampString = "506929784.015871"
+            filePath = "SingleViewAppSwiftTemplate/Timer.swift"
+            timestampString = "506976577.163609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "arrowDownStatement1Action(_:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "timerCountdown()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

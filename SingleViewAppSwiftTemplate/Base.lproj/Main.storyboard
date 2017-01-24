@@ -62,13 +62,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uB2-qy-0LK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake to complete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uB2-qy-0LK">
                                 <rect key="frame" x="119" y="515" width="138" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="138" id="6jt-2n-dCg"/>
                                     <constraint firstAttribute="height" constant="20" id="y0i-BP-R4z"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.50765423769999996" green="0.77501336460000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -78,7 +78,10 @@
                                     <constraint firstAttribute="height" constant="35" id="MeM-HE-V9l"/>
                                     <constraint firstAttribute="width" constant="138" id="b5a-AN-JTv"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="next_round_success"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <state key="normal" title="0:60">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oow-ed-XUp">
                                 <rect key="frame" x="331" y="28" width="28" height="99"/>
@@ -87,7 +90,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="down_full"/>
                                 <connections>
-                                    <action selector="arrowDownStatement1Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CeQ-fv-xXk"/>
+                                    <action selector="arrowButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kVG-K9-Aod"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kk1-dE-m9l">
@@ -97,7 +100,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="up_full"/>
                                 <connections>
-                                    <action selector="arrowUpStatement4Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oVf-dM-QgH"/>
+                                    <action selector="arrowButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="He4-zl-0ou"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaf-PW-JBx">
@@ -107,7 +110,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="up_half"/>
                                 <connections>
-                                    <action selector="arrowUpStatement3Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="72g-0X-tz7"/>
+                                    <action selector="arrowButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PcU-on-ZfB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6a-lq-ri4">
@@ -117,7 +120,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="down_half"/>
                                 <connections>
-                                    <action selector="arrowDownStatement3Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="quA-dn-Bz3"/>
+                                    <action selector="arrowButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kPK-1m-9F2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE0-Ap-Ifz">
@@ -127,7 +130,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="down_half"/>
                                 <connections>
-                                    <action selector="arrowDownStatement2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P2d-uu-mTJ"/>
+                                    <action selector="arrowButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hgx-2S-Cu6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCn-lY-lf5">
@@ -138,7 +141,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="up_half"/>
                                 <connections>
-                                    <action selector="arrowUpStatement2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mtQ-8v-3mf"/>
+                                    <action selector="arrowButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Axl-g7-tWc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -204,7 +207,6 @@
     <resources>
         <image name="down_full" width="158" height="457"/>
         <image name="down_half" width="158" height="229"/>
-        <image name="next_round_success" width="558" height="142"/>
         <image name="up_full" width="158" height="457"/>
         <image name="up_half" width="158" height="229"/>
     </resources>

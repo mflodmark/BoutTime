@@ -29,11 +29,13 @@ class ViewController: UIViewController {
     // Declarations
     var imageButtonSelected: UIImage? = nil
     var imageButtonNonSelected: UIImage? = nil
-    var selectedStatement: String? = nil
-    var selectedStatementAbove: String? = nil
-    var selectedStatementBelow: String? = nil
+    //var selectedStatement: String? = nil
+    //var selectedStatementAbove: String? = nil
+    //var selectedStatementBelow: String? = nil
     let statements = Statements()
-   
+    //let timer = TimerCountdown()
+    var timer = Timer()
+    var timeRemaining: Int = 60
     
     
     override func viewDidLoad() {
@@ -54,10 +56,33 @@ class ViewController: UIViewController {
     func setUpView() {
         roundedCorners()
         addStatementToLabels()
+        timerStart()
     }
     
     func roundedCorners() {
         statement1.layer.cornerRadius = 5
+    }
+    
+    func timerStart() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCountdown), userInfo: nil, repeats: true)
+        
+        // Starting time
+        timeRemaining = 60
+    }
+    
+    func timerCountdown() {
+        // update label on UI
+        nextRound.setTitle("0:\(timeRemaining)", for: UIControlState.normal)
+        
+        // Stop timer & go to next question if 0
+        if timeRemaining == 0 {
+            // Must invalidate timer before starting a new round, otherwise it becomes a new timer all the time
+            timer.invalidate()
+            
+            //nextRound() -- add function for next round
+        } else {
+            timeRemaining -= 1
+        }
     }
     
 
@@ -78,7 +103,7 @@ class ViewController: UIViewController {
             statements.randomStatementArray.append(randomStatement)
             
             // Remove statement from original array
-            statements.statementsArray.remove(at: indexOfSelectedStatement)
+            //statements.statementsArray.remove(at: indexOfSelectedStatement)
             
         }
         
@@ -105,14 +130,7 @@ class ViewController: UIViewController {
         arrowDownStatement1.setBackgroundImage(imageNonSelected, for: UIControlState.normal)
     }
     
-    func moveLabels(newStatement1: String?, newStatement2: String?, newStatement3: String?, newStatement4: String?) {
-        statement1.text = newStatement1
-        statement2.text = newStatement2
-        statement3.text = newStatement3
-        statement4.text = newStatement4
 
-        
-    }
     
 
     
@@ -133,54 +151,47 @@ class ViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func arrowDownStatement1Action(_ sender: UIButton) {
-        // setup buttons
-        imageButtonSelected = #imageLiteral(resourceName: "down_full_selected")
-        imageButtonNonSelected = #imageLiteral(resourceName: "down_full")
-        
-        // setup statements
-        selectedStatementAbove = nil
-        selectedStatement = statement1.text
-        selectedStatementBelow = statement2.text
-        
-        // FIXME: fix unwrapping
-        showSelectedArrow(button: sender, imageSelected: imageButtonSelected!, imageNonSelected: imageButtonNonSelected!)
-        
-        moveLabels(newStatement1: selectedStatementBelow, newStatement2: selectedStatement, newStatement3: statement3.text, newStatement4: statement4.text)
+    @IBAction func arrowButtonPressed(_ sender: UIButton) {
+        switch sender {
+            case arrowDownStatement1:
+                let currentText = statement1.text
+                let belowText = statement2.text
+                statement1.text = belowText
+                statement2.text = currentText
+            
+            case arrowDownStatement2:
+                let currentText = statement2.text
+                let belowText = statement3.text
+                statement2.text = belowText
+                statement3.text = currentText
+            
+            case arrowDownStatement3:
+                let currentText = statement3.text
+                let belowText = statement4.text
+                statement3.text = belowText
+                statement4.text = currentText
+            
+            case arrowUpStatement2:
+                let currentText = statement2.text
+                let aboveText = statement1.text
+                statement2.text = aboveText
+                statement1.text = currentText
+            
+            case arrowUpStatement3:
+                let currentText = statement3.text
+                let aboveText = statement2.text
+                statement3.text = aboveText
+                statement2.text = currentText
+            
+            case arrowUpStatement4:
+                let currentText = statement4.text
+                let aboveText = statement3.text
+                statement4.text = aboveText
+                statement3.text = currentText
+            
+            default:
+                print("Something went wrong!")
+        }
     }
-    
-    
-    @IBAction func arrowUpStatement2Action(_ sender: UIButton) {
-        // setup buttons
-        imageButtonSelected = #imageLiteral(resourceName: "up_half_selected")
-        imageButtonNonSelected = #imageLiteral(resourceName: "up_half")
-        
-        // setup statements
-        selectedStatementAbove = statement1.text
-        selectedStatement = statement2.text
-        selectedStatementBelow = statement3.text
-        
-        // FIXME: fix unwrapping
-        showSelectedArrow(button: sender, imageSelected: imageButtonSelected!, imageNonSelected: imageButtonNonSelected!)
-        
-        moveLabels(newStatement1: selectedStatementBelow, newStatement2: selectedStatement, newStatement3: statement3.text, newStatement4: statement4.text)
-    }
-    
-    @IBAction func arrowDownStatement2Action(_ sender: UIButton) {
-    }
-    
-    @IBAction func arrowUpStatement3Action(_ sender: UIButton) {
-    }
-  
-    @IBAction func arrowDownStatement3Action(_ sender: UIButton) {
-    }
-    
-    @IBAction func arrowUpStatement4Action(_ sender: UIButton) {
-    }
-    
-    
-
-
-
 }
 
