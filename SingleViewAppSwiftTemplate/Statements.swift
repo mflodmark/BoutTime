@@ -36,35 +36,35 @@ enum PointType: String {
     case PlusMinus
 }
 
+enum Season: String {
+    case fiftheenSixteen = "2015/16"
+}
+
 struct StatementSetUp {
     var player: Player
     var pointType: PointType
     var points: Int
-    var year: Int
+    var season: Season
 }
 
 class Statements {
     // Array of statements that is used as text for the labels
     var statementsArray: [StatementSetUp] = [
-        StatementSetUp(player: .crosby, pointType: .Assists, points: 50, year: 2015),
-        StatementSetUp(player: .burns, pointType: .Assists, points: 40, year: 2015),
-        StatementSetUp(player: .karlsson, pointType: .Goals, points: 30, year: 2015),
-        StatementSetUp(player: .benn, pointType: .Goals, points: 45, year: 2015)
+        StatementSetUp(player: .crosby, pointType: .Assists, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .burns, pointType: .Assists, points: 40, season: .fiftheenSixteen),
+        StatementSetUp(player: .karlsson, pointType: .Goals, points: 30, season: .fiftheenSixteen),
+        StatementSetUp(player: .benn, pointType: .Goals, points: 45, season: .fiftheenSixteen)
         
     ]
     
     var randomStatementArray: [StatementSetUp] = []
 
     
-    func randomStatement() -> StatementSetUp {
+    func randomStatement() -> Int {
         let indexOfSelectedStatement = GKRandomSource.sharedRandom().nextInt(upperBound: statementsArray.count)
         let statementDictionary = statementsArray[indexOfSelectedStatement]
         
-        return statementDictionary
-        
-        // Return text that is suppose to be on each label
-        //let statementText = "Player: \(statementDictionary.player) \nType: \(statementDictionary.pointType) \nPoints: \(statementDictionary.points) \nYear: \(statementDictionary.year)"
-        //return statementText
+        return indexOfSelectedStatement
     }
     
     func addToRandomStatementArray(statement: StatementSetUp) {

@@ -38,11 +38,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
-
-        
         setUpView()
     }
 
@@ -67,24 +64,40 @@ class ViewController: UIViewController {
     
     func addStatementToLabels() {
         // Arrays
-        let labelsArray = [statement1,statement2, statement3, statement4]
+        let labelsArray = [statement1, statement2, statement3, statement4]
 
         for label in labelsArray {
-            let randomStatement = Statements().randomStatement()
-            let statementText = "Player: \(randomStatement.player.rawValue) \nType: \(randomStatement.pointType) \nPoints: \(randomStatement.points) \nYear: \(randomStatement.year)"
+            // Add random statement to labels
+            let indexOfSelectedStatement = Statements().randomStatement()
+            let randomStatement = statements.statementsArray[indexOfSelectedStatement]
+            let statementText = "Player: \(randomStatement.player.rawValue) \nType: \(randomStatement.pointType) \nSeason: \(randomStatement.season.rawValue)"
+            
             label?.text = statementText
             
+            // Add statement to random statement array
+            statements.randomStatementArray.append(randomStatement)
+            
+            // Remove statement from original array
+            statements.statementsArray.remove(at: indexOfSelectedStatement)
+            
         }
-                
+        
     }
 
     
     func showSelectedArrow(button: UIButton, imageSelected: UIImage, imageNonSelected: UIImage) {
         
-        button.setBackgroundImage(imageSelected, for: UIControlState.normal)
+//        if button.isHighlighted == true {
+//            button.setBackgroundImage(imageSelected, for: UIControlState.normal)
+//        } else {
+//            button.setBackgroundImage(imageNonSelected, for: UIControlState.normal)
+//
+//        }
+        
+        //button.setBackgroundImage(imageSelected, for: UIControlState.normal)
         
         // Take back first image with delay
-        loadWithDelay(seconds: 1, button: button, imageNonselected: imageNonSelected)
+        //loadWithDelay(seconds: 1, button: button, imageNonselected: imageNonSelected)
 
     }
     
@@ -126,14 +139,46 @@ class ViewController: UIViewController {
         imageButtonNonSelected = #imageLiteral(resourceName: "down_full")
         
         // setup statements
+        selectedStatementAbove = nil
         selectedStatement = statement1.text
         selectedStatementBelow = statement2.text
-        selectedStatementAbove = nil
         
         // FIXME: fix unwrapping
         showSelectedArrow(button: sender, imageSelected: imageButtonSelected!, imageNonSelected: imageButtonNonSelected!)
+        
         moveLabels(newStatement1: selectedStatementBelow, newStatement2: selectedStatement, newStatement3: statement3.text, newStatement4: statement4.text)
     }
+    
+    
+    @IBAction func arrowUpStatement2Action(_ sender: UIButton) {
+        // setup buttons
+        imageButtonSelected = #imageLiteral(resourceName: "up_half_selected")
+        imageButtonNonSelected = #imageLiteral(resourceName: "up_half")
+        
+        // setup statements
+        selectedStatementAbove = statement1.text
+        selectedStatement = statement2.text
+        selectedStatementBelow = statement3.text
+        
+        // FIXME: fix unwrapping
+        showSelectedArrow(button: sender, imageSelected: imageButtonSelected!, imageNonSelected: imageButtonNonSelected!)
+        
+        moveLabels(newStatement1: selectedStatementBelow, newStatement2: selectedStatement, newStatement3: statement3.text, newStatement4: statement4.text)
+    }
+    
+    @IBAction func arrowDownStatement2Action(_ sender: UIButton) {
+    }
+    
+    @IBAction func arrowUpStatement3Action(_ sender: UIButton) {
+    }
+  
+    @IBAction func arrowDownStatement3Action(_ sender: UIButton) {
+    }
+    
+    @IBAction func arrowUpStatement4Action(_ sender: UIButton) {
+    }
+    
+    
 
 
 

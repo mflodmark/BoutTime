@@ -96,6 +96,9 @@
                                     <constraint firstAttribute="height" constant="99" id="Lcd-Ug-k1P"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="up_full"/>
+                                <connections>
+                                    <action selector="arrowUpStatement4Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oVf-dM-QgH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaf-PW-JBx">
                                 <rect key="frame" x="331" y="243" width="28" height="50"/>
@@ -103,6 +106,9 @@
                                     <constraint firstAttribute="height" constant="50" id="LcQ-ea-bXJ"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="up_half"/>
+                                <connections>
+                                    <action selector="arrowUpStatement3Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="72g-0X-tz7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6a-lq-ri4">
                                 <rect key="frame" x="331" y="291" width="28" height="50"/>
@@ -110,6 +116,9 @@
                                     <constraint firstAttribute="height" constant="50" id="PCs-2M-e9Z"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="down_half"/>
+                                <connections>
+                                    <action selector="arrowDownStatement3Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="quA-dn-Bz3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE0-Ap-Ifz">
                                 <rect key="frame" x="331" y="185" width="28" height="50"/>
@@ -117,6 +126,9 @@
                                     <constraint firstAttribute="height" constant="50" id="Po6-wp-oQ4"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="down_half"/>
+                                <connections>
+                                    <action selector="arrowDownStatement2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P2d-uu-mTJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCn-lY-lf5">
                                 <rect key="frame" x="331" y="136" width="28" height="50"/>
@@ -125,6 +137,9 @@
                                     <constraint firstAttribute="height" constant="50" id="TES-sR-DgN"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="up_half"/>
+                                <connections>
+                                    <action selector="arrowUpStatement2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mtQ-8v-3mf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.079930968582630157" green="0.21712946891784668" blue="0.33692061901092529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
