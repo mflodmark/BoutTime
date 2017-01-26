@@ -51,10 +51,41 @@ class Statements {
     // Array of statements that is used as text for the labels
     var statementsArray: [StatementSetUp] = [
         StatementSetUp(player: .crosby, pointType: .Assists, points: 50, season: .fiftheenSixteen),
-        StatementSetUp(player: .burns, pointType: .Assists, points: 40, season: .fiftheenSixteen),
-        StatementSetUp(player: .karlsson, pointType: .Goals, points: 30, season: .fiftheenSixteen),
-        StatementSetUp(player: .benn, pointType: .Goals, points: 45, season: .fiftheenSixteen)
-        
+        StatementSetUp(player: .crosby, pointType: .Goals, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .crosby, pointType: .Shots, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .crosby, pointType: .PIMs, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .crosby, pointType: .PlusMinus, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .crosby, pointType: .Points, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .pachioretty, pointType: .Assists, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .pachioretty, pointType: .Goals, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .pachioretty, pointType: .Shots, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .pachioretty, pointType: .PIMs, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .pachioretty, pointType: .PlusMinus, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .pachioretty, pointType: .Points, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .benn, pointType: .Assists, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .benn, pointType: .Goals, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .benn, pointType: .Shots, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .benn, pointType: .PIMs, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .benn, pointType: .PlusMinus, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .benn, pointType: .Points, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .burns, pointType: .Assists, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .burns, pointType: .Goals, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .burns, pointType: .Shots, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .burns, pointType: .PIMs, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .burns, pointType: .PlusMinus, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .burns, pointType: .Points, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .karlsson, pointType: .Assists, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .karlsson, pointType: .Goals, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .karlsson, pointType: .Shots, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .karlsson, pointType: .PIMs, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .karlsson, pointType: .PlusMinus, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .karlsson, pointType: .Points, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .tarasenko, pointType: .Assists, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .tarasenko, pointType: .Goals, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .tarasenko, pointType: .Shots, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .tarasenko, pointType: .PIMs, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .tarasenko, pointType: .PlusMinus, points: 50, season: .fiftheenSixteen),
+        StatementSetUp(player: .tarasenko, pointType: .Points, points: 50, season: .fiftheenSixteen)
     ]
     
     var randomStatementArray: [StatementSetUp] = []

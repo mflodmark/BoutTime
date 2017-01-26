@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     var timer = Timer()
     
     var checkedPoints: Bool = false
+    var countRounds: Int = 0
+    var pointsPerRound: Int = 0
     
     var timeRemaining: Int = 60
     var points1: Int = 0
@@ -62,8 +64,21 @@ class ViewController: UIViewController {
         addStatementToLabels()
         timerStart()
         buttonsIsEnabledTrue()
+        countingRounds()
         // Clear random array
         statements.randomStatementArray.removeAll()
+    }
+    
+    func countingRounds() {
+        if countRounds < 6 {
+            countRounds += 1
+        } else {
+            // show score and let the player decide if starting new play
+            let viewPlayAgain = ViewPlayAgain()
+            viewPlayAgain.showScore(points: pointsPerRound, rounds: countRounds)
+            // restart counter of points
+            pointsPerRound = 0
+        }
     }
     
     func roundedCorners() {
@@ -105,18 +120,10 @@ class ViewController: UIViewController {
             // Must invalidate timer before starting a new round, otherwise it becomes a new timer all the time
             timer.invalidate()
             nextRound.setTitle("", for: UIControlState.normal)
-
-            // Buttons can't be pressed
-            buttonsIsEnabledFalse()
             
             // Replace timer with image depending on correct answer or not
-            if checkedPoints == true {
-                nextRound.setBackgroundImage(#imageLiteral(resourceName: "next_round_success"), for: UIControlState.normal)
-            } else {
-                nextRound.setBackgroundImage(#imageLiteral(resourceName: "next_round_fail"), for: UIControlState.normal)
-            }
+            checkLabelToPoints()
             
-            //nextRound() -- add function for next round
         } else {
             timeRemaining -= 1
         }
@@ -153,6 +160,15 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        
+        if motion == .motionShake {
+            
+            checkLabelToPoints()
+            
+        }
+    }
 
     
     func showSelectedArrow(button: UIButton, imageSelected: UIImage, imageNonSelected: UIImage) {
@@ -175,6 +191,17 @@ class ViewController: UIViewController {
 
         return checkedPoints
 
+    }
+    
+    func checkLabelToPoints() {
+        if checkedPoints == true {
+            nextRound.setBackgroundImage(#imageLiteral(resourceName: "next_round_success"), for: UIControlState.normal)
+            pointsPerRound += 1
+        } else {
+            nextRound.setBackgroundImage(#imageLiteral(resourceName: "next_round_fail"), for: UIControlState.normal)
+        }
+        // Buttons can't be pressed
+        buttonsIsEnabledFalse()
     }
     
 
@@ -223,5 +250,13 @@ class ViewController: UIViewController {
                 print("Something went wrong!")
         }
     }
+    
+    @IBAction func nextRoundAction(_ sender: UIButton) {
+        // check rounds
+        countingRounds()
+    
+    }
+    
+    
 }
 

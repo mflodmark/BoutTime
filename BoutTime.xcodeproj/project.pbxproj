@@ -10,6 +10,8 @@
 		289009611E34AE17006A097D /* Statements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289009601E34AE17006A097D /* Statements.swift */; };
 		289009631E34AF2D006A097D /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289009621E34AF2D006A097D /* Images.swift */; };
 		289009651E34AFAC006A097D /* ErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289009641E34AFAC006A097D /* ErrorTypes.swift */; };
+		289009691E387385006A097D /* ViewPlayAgain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289009681E387385006A097D /* ViewPlayAgain.swift */; };
+		2890096B1E387BAA006A097D /* ViewGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2890096A1E387BAA006A097D /* ViewGoogle.swift */; };
 		3A8AADC91DF9B85E00A2B931 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AADC81DF9B85E00A2B931 /* AppDelegate.swift */; };
 		3A8AADCB1DF9B85E00A2B931 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AADCA1DF9B85E00A2B931 /* ViewController.swift */; };
 		3A8AADCE1DF9B85E00A2B931 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8AADCC1DF9B85E00A2B931 /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 		289009601E34AE17006A097D /* Statements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statements.swift; sourceTree = "<group>"; };
 		289009621E34AF2D006A097D /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		289009641E34AFAC006A097D /* ErrorTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTypes.swift; sourceTree = "<group>"; };
+		289009681E387385006A097D /* ViewPlayAgain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPlayAgain.swift; sourceTree = "<group>"; };
+		2890096A1E387BAA006A097D /* ViewGoogle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewGoogle.swift; sourceTree = "<group>"; };
 		3A8AADC51DF9B85E00A2B931 /* BoutTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoutTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8AADC81DF9B85E00A2B931 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A8AADCA1DF9B85E00A2B931 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				289009621E34AF2D006A097D /* Images.swift */,
 				289009601E34AE17006A097D /* Statements.swift */,
 				3A8AADCA1DF9B85E00A2B931 /* ViewController.swift */,
+				2890096A1E387BAA006A097D /* ViewGoogle.swift */,
+				289009681E387385006A097D /* ViewPlayAgain.swift */,
 				289009641E34AFAC006A097D /* ErrorTypes.swift */,
 				3A8AADCC1DF9B85E00A2B931 /* Main.storyboard */,
 				3A8AADCF1DF9B85E00A2B931 /* Assets.xcassets */,
@@ -272,6 +278,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8AADCB1DF9B85E00A2B931 /* ViewController.swift in Sources */,
+				2890096B1E387BAA006A097D /* ViewGoogle.swift in Sources */,
+				289009691E387385006A097D /* ViewPlayAgain.swift in Sources */,
 				289009631E34AF2D006A097D /* Images.swift in Sources */,
 				289009611E34AE17006A097D /* Statements.swift in Sources */,
 				3A8AADC91DF9B85E00A2B931 /* AppDelegate.swift in Sources */,
@@ -352,6 +360,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Flodmark (QF4D29892Z)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -402,6 +411,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Flodmark (QF4D29892Z)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
