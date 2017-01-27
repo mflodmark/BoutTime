@@ -48,6 +48,7 @@ struct StatementSetUp {
 }
 
 class Statements {
+    
     // Array of statements that is used as text for the labels
     var statementsArray: [StatementSetUp] = [
         StatementSetUp(player: .crosby, pointType: .Assists, points: 50, season: .fiftheenSixteen),
@@ -110,6 +111,15 @@ class Statements {
         randomStatementArray.sort { (one: StatementSetUp, two: StatementSetUp) -> Bool in
             one.points < two.points
         }
+        print("randomArrayCount: \(randomStatementArray.count)")
+        print(randomStatementArray[0].player)
+        print(randomStatementArray[0].points)
+        print(randomStatementArray[1].player)
+        print(randomStatementArray[1].points)
+        print(randomStatementArray[2].player)
+        print(randomStatementArray[2].points)
+        print(randomStatementArray[3].player)
+        print(randomStatementArray[4].points)
     }
 }
 

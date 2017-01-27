@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     var imageButtonSelected: UIImage? = nil
     var imageButtonNonSelected: UIImage? = nil
     let statements = Statements()
+    let viewPlayAgain = ViewPlayAgain()
     var timer = Timer()
     
     var checkedPoints: Bool = false
@@ -37,10 +38,14 @@ class ViewController: UIViewController {
     var pointsPerRound: Int = 0
     
     var timeRemaining: Int = 60
-    var points1: Int = 0
-    var points2: Int = 0
-    var points3: Int = 0
-    var points4: Int = 0
+    
+    var playerStatement: String = ""
+    var playerArray: [StatementSetUp] = []
+    var player1: StatementSetUp? = nil
+    var player2: StatementSetUp? = nil
+    var player3: StatementSetUp? = nil
+    var player4: StatementSetUp? = nil
+
 
     
     
@@ -61,12 +66,14 @@ class ViewController: UIViewController {
     
     func setUpView() {
         roundedCorners()
-        addStatementToLabels()
+        randomStatements()
         timerStart()
         buttonsIsEnabledTrue()
         countingRounds()
+        createStatementToLabel()
         // Clear random array
         statements.randomStatementArray.removeAll()
+        labelNextRound.text = "Shake to complete"
     }
     
     func countingRounds() {
@@ -74,10 +81,18 @@ class ViewController: UIViewController {
             countRounds += 1
         } else {
             // show score and let the player decide if starting new play
-            let viewPlayAgain = ViewPlayAgain()
             viewPlayAgain.showScore(points: pointsPerRound, rounds: countRounds)
+
             // restart counter of points
             pointsPerRound = 0
+            performSegue(withIdentifier: "playAgainSegue" , sender: nextRound)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        if segue.identifier == "playAgainSegue" {
+            //segue.destination
         }
     }
     
@@ -117,9 +132,6 @@ class ViewController: UIViewController {
         
         // Stop timer & go to next question if 0
         if timeRemaining == 0 {
-            // Must invalidate timer before starting a new round, otherwise it becomes a new timer all the time
-            timer.invalidate()
-            nextRound.setTitle("", for: UIControlState.normal)
             
             // Replace timer with image depending on correct answer or not
             checkLabelToPoints()
@@ -131,46 +143,63 @@ class ViewController: UIViewController {
     
 
     
-    func addStatementToLabels() {
-        // Arrays
-        let labelsArray = [statement1, statement2, statement3, statement4]
-
-        for label in labelsArray {
+    func randomStatements() {
+        for _ in 1...4 {
             // Add random statement to labels
             let indexOfSelectedStatement = Statements().randomStatement()
             let randomStatement = statements.statementsArray[indexOfSelectedStatement]
-            let statementText = "Player: \(randomStatement.player.rawValue) \nType: \(randomStatement.pointType) \nSeason: \(randomStatement.season.rawValue)"
-            
-            label?.text = statementText
-            
-            // Add statement to random statement array
+
+
+            // Add statement to arrays
             statements.randomStatementArray.append(randomStatement)
-            
-            // Add points to "label"
-            //switch label {
-                //case statement1: points1 = randomStatement.points
-                //case statement2: points2 = randomStatement.points
-                //case statement3: points2 = randomStatement.points
-                //case statement4: points2 = randomStatement.points
-            //}
-            
+            playerArray.append(randomStatement)
+
             // Remove statement from original array
             //statements.statementsArray.remove(at: indexOfSelectedStatement)
-            
         }
         
+        player1 = playerArray[0]
+        player2 = playerArray[1]
+        player3 = playerArray[2]
+        player4 = playerArray[3]
+        
+        print("randomArray: \(statements.randomStatementArray)")
+        print("statementsArrayCount: \(statements.statementsArray.count)")
+        print("playerArray: \(playerArray)")
+        print(player1?.player)
+        print(player2?.player)
+        print(player3?.player)
+        print(player4?.player)
+        
+    }
+    
+    
+    func createStatementToLabel() {
+        for player in playerArray {
+            let statementText = "Player: \(player.player.rawValue) \nType: \(player.pointType) \nSeason: \(player.season.rawValue)"
+            switch player.player {
+                //FIXME: unwrapping
+                case (player1?.player)!: statement1.text = statementText
+                case (player2?.player)!: statement2.text = statementText
+                case (player3?.player)!: statement3.text = statementText
+                case (player4?.player)!: statement4.text = statementText
+            default: "Something went wrong!"
+            }
+        }
+        print("Statements:")
+        print(statement1.text)
+        print(statement2.text)
+        print(statement3.text)
+        print(statement4.text)
     }
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        
         if motion == .motionShake {
-            
             checkLabelToPoints()
-            
         }
     }
 
-    
+    // TA BORT?
     func showSelectedArrow(button: UIButton, imageSelected: UIImage, imageNonSelected: UIImage) {
 
 
@@ -183,7 +212,7 @@ class ViewController: UIViewController {
     func checkPoints() -> Bool {
         let array = statements.randomStatementArray
         
-        if points1 == array[0].points && points2 == array[1].points && points3 == array[2].points && points4 == array[3].points {
+        if player1?.points == array[0].points && player2?.points == array[1].points && player3?.points == array[2].points && player4?.points == array[3].points {
             checkedPoints = true
         } else {
             checkedPoints = false
@@ -202,6 +231,11 @@ class ViewController: UIViewController {
         }
         // Buttons can't be pressed
         buttonsIsEnabledFalse()
+        labelNextRound.text = "Tap events to learn more"
+        
+        // Must invalidate timer before starting a new round, otherwise it becomes a new timer all the time
+        timer.invalidate()
+        nextRound.setTitle("", for: UIControlState.normal)
     }
     
 
@@ -215,36 +249,60 @@ class ViewController: UIViewController {
                 let belowText = statement2.text
                 statement1.text = belowText
                 statement2.text = currentText
+                let currentPlayer = player1
+                let belowPlayer = player2
+                player1 = belowPlayer
+                player2 = currentPlayer
             
             case arrowDownStatement2:
                 let currentText = statement2.text
                 let belowText = statement3.text
                 statement2.text = belowText
                 statement3.text = currentText
+                let currentPlayer = player2
+                let belowPlayer = player3
+                player2 = belowPlayer
+                player3 = currentPlayer
             
             case arrowDownStatement3:
                 let currentText = statement3.text
                 let belowText = statement4.text
                 statement3.text = belowText
                 statement4.text = currentText
+                let currentPlayer = player3
+                let belowPlayer = player4
+                player3 = belowPlayer
+                player4 = currentPlayer
             
             case arrowUpStatement2:
                 let currentText = statement2.text
                 let aboveText = statement1.text
                 statement2.text = aboveText
                 statement1.text = currentText
+                let currentPlayer = player2
+                let abovePlayer = player1
+                player2 = abovePlayer
+                player1 = currentPlayer
             
             case arrowUpStatement3:
                 let currentText = statement3.text
                 let aboveText = statement2.text
                 statement3.text = aboveText
                 statement2.text = currentText
+                let currentPlayer = player3
+                let abovePlayer = player2
+                player3 = abovePlayer
+                player2 = currentPlayer
             
             case arrowUpStatement4:
                 let currentText = statement4.text
                 let aboveText = statement3.text
                 statement4.text = aboveText
                 statement3.text = currentText
+                let currentPlayer = player4
+                let abovePlayer = player3
+                player4 = abovePlayer
+                player3 = currentPlayer
             
             default:
                 print("Something went wrong!")

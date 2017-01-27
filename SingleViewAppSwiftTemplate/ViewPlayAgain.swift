@@ -25,7 +25,7 @@ class ViewPlayAgain: UIViewController {
     }
     
     func showScore(points: Int, rounds: Int) {
-        score.text = "\(score)\(rounds)"
+        score.text = "\(points)\(rounds)"
     }
     
     

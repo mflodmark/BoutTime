@@ -84,7 +84,6 @@
                                 </state>
                                 <connections>
                                     <action selector="nextRoundAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="phO-3w-wDG"/>
-                                    <segue destination="Oed-Oa-ezX" kind="presentation" id="Gpk-9u-7di"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oow-ed-XUp">
