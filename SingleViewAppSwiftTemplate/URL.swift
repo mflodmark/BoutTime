@@ -1,5 +1,5 @@
 //
-//  ErrorTypes.swift
+//  URL.swift
 //  BoutTime
 //
 //  Created by Markus Flodmark on 2017-01-22.
@@ -7,3 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
+class URLview: UIViewController {
+    
+}

@@ -11,10 +11,10 @@ import UIKit
 class ViewController: UIViewController {
 
     // Outlets
-    @IBOutlet weak var statement1: UILabel!
-    @IBOutlet weak var statement2: UILabel!
-    @IBOutlet weak var statement3: UILabel!
-    @IBOutlet weak var statement4: UILabel!
+    @IBOutlet weak var statement1: UIButton!
+    @IBOutlet weak var statement2: UIButton!
+    @IBOutlet weak var statement3: UIButton!
+    @IBOutlet weak var statement4: UIButton!
     
     @IBOutlet weak var arrowDownStatement1: UIButton!
     @IBOutlet weak var arrowDownStatement2: UIButton!
@@ -41,6 +41,7 @@ class ViewController: UIViewController {
     
     var playerStatement: String = ""
     var playerArray: [StatementSetUp] = []
+    
     var player1: StatementSetUp? = nil
     var player2: StatementSetUp? = nil
     var player3: StatementSetUp? = nil
@@ -69,16 +70,20 @@ class ViewController: UIViewController {
         randomStatements()
         timerStart()
         buttonsIsEnabledTrue()
-        countingRounds()
         createStatementToLabel()
         // Clear random array
         statements.randomStatementArray.removeAll()
         labelNextRound.text = "Shake to complete"
+        // Set default backround image
+        nextRound.setBackgroundImage(nil, for: UIControlState.normal)
+        // Unable statement buttons
+        statementButtonsIsEnabledFalse()
     }
     
     func countingRounds() {
         if countRounds < 6 {
             countRounds += 1
+            setUpView()
         } else {
             // show score and let the player decide if starting new play
             viewPlayAgain.showScore(points: pointsPerRound, rounds: countRounds)
@@ -101,12 +106,35 @@ class ViewController: UIViewController {
     }
     
     
+    func statementButtonsIsEnabledFalse () {
+        // Unable buttons
+        let arrowButtonsArray = [statement1, statement2, statement3, statement4]
+        
+        for button in arrowButtonsArray {
+            button?.isEnabled = false
+            button?.alpha = 1.0
+            //button?.tintColor = UIColor(043659)
+        }
+    }
+    
+    func statementButtonsIsEnabledTrue () {
+        // Unable buttons
+        let arrowButtonsArray = [statement1, statement2, statement3, statement4]
+        
+        for button in arrowButtonsArray {
+            button?.isEnabled = true
+        }
+    }
+    
+    
+    
     func buttonsIsEnabledFalse () {
         // Unable buttons
         let arrowButtonsArray = [arrowUpStatement2, arrowUpStatement3, arrowUpStatement4, arrowDownStatement1, arrowDownStatement2, arrowDownStatement3]
         
         for button in arrowButtonsArray {
             button?.isEnabled = false
+            button?.alpha = 1.0
         }
     }
     
@@ -163,34 +191,33 @@ class ViewController: UIViewController {
         player3 = playerArray[2]
         player4 = playerArray[3]
         
+        // Sort randomArray
+        statements.sortPointsOfRandomStatementArray()
+        
         print("randomArray: \(statements.randomStatementArray)")
         print("statementsArrayCount: \(statements.statementsArray.count)")
         print("playerArray: \(playerArray)")
-        print(player1?.player)
-        print(player2?.player)
-        print(player3?.player)
-        print(player4?.player)
+        print(player1?.player ?? "Missing value")
+        print(player2?.player ?? "Missing value")
+        print(player3?.player ?? "Missing value")
+        print(player4?.player ?? "Missing value")
         
     }
     
     
     func createStatementToLabel() {
-        for player in playerArray {
-            let statementText = "Player: \(player.player.rawValue) \nType: \(player.pointType) \nSeason: \(player.season.rawValue)"
-            switch player.player {
-                //FIXME: unwrapping
-                case (player1?.player)!: statement1.text = statementText
-                case (player2?.player)!: statement2.text = statementText
-                case (player3?.player)!: statement3.text = statementText
-                case (player4?.player)!: statement4.text = statementText
-            default: "Something went wrong!"
-            }
-        }
+        
+        statement1.setTitle("Player: \(player1?.player.rawValue) \nType: \(player1?.pointType) \nSeason: \(player1?.season.rawValue)", for: UIControlState.normal)
+        statement2.setTitle("Player: \(player2?.player.rawValue) \nType: \(player2?.pointType) \nSeason: \(player2?.season.rawValue)", for: UIControlState.normal)
+        statement3.setTitle("Player: \(player3?.player.rawValue) \nType: \(player3?.pointType) \nSeason: \(player3?.season.rawValue)", for: UIControlState.normal)
+        statement4.setTitle("Player: \(player4?.player.rawValue) \nType: \(player4?.pointType) \nSeason: \(player4?.season.rawValue)", for: UIControlState.normal)
+
+        
         print("Statements:")
-        print(statement1.text)
-        print(statement2.text)
-        print(statement3.text)
-        print(statement4.text)
+        print(statement1.title(for: UIControlState.normal) ?? "Missing value")
+        print(statement2.title(for: UIControlState.normal) ?? "Missing value")
+        print(statement3.title(for: UIControlState.normal) ?? "Missing value")
+        print(statement4.title(for: UIControlState.normal) ?? "Missing value")
     }
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
@@ -209,20 +236,24 @@ class ViewController: UIViewController {
         arrowDownStatement1.setBackgroundImage(imageNonSelected, for: UIControlState.normal)
     }
     
-    func checkPoints() -> Bool {
+    func checkPoints() {
         let array = statements.randomStatementArray
         
-        if player1?.points == array[0].points && player2?.points == array[1].points && player3?.points == array[2].points && player4?.points == array[3].points {
+        if player1?.points == statements.randomStatementArray[0].points && player2?.points == statements.randomStatementArray[1].points && player3?.points == statements.randomStatementArray[2].points && player4?.points == statements.randomStatementArray[3].points {
             checkedPoints = true
         } else {
             checkedPoints = false
         }
-
-        return checkedPoints
-
+        
+        print("Points:")
+        print("\(player1?.points)")
+        print("\(array[0].points)")
+        
     }
     
     func checkLabelToPoints() {
+        
+        
         if checkedPoints == true {
             nextRound.setBackgroundImage(#imageLiteral(resourceName: "next_round_success"), for: UIControlState.normal)
             pointsPerRound += 1
@@ -233,10 +264,14 @@ class ViewController: UIViewController {
         buttonsIsEnabledFalse()
         labelNextRound.text = "Tap events to learn more"
         
+        // Statement buttons can be pressed
+        statementButtonsIsEnabledTrue()
+        
         // Must invalidate timer before starting a new round, otherwise it becomes a new timer all the time
         timer.invalidate()
         nextRound.setTitle("", for: UIControlState.normal)
     }
+    
     
 
     
@@ -245,60 +280,66 @@ class ViewController: UIViewController {
     @IBAction func arrowButtonPressed(_ sender: UIButton) {
         switch sender {
             case arrowDownStatement1:
-                let currentText = statement1.text
-                let belowText = statement2.text
-                statement1.text = belowText
-                statement2.text = currentText
+                let currentText = statement1.title(for: UIControlState.normal)
+                let belowText = statement2.title(for: UIControlState.normal)
+                statement1.setTitle(currentText, for: UIControlState.normal)
+                statement2.setTitle(belowText, for: UIControlState.normal)
+                
                 let currentPlayer = player1
                 let belowPlayer = player2
                 player1 = belowPlayer
                 player2 = currentPlayer
             
             case arrowDownStatement2:
-                let currentText = statement2.text
-                let belowText = statement3.text
-                statement2.text = belowText
-                statement3.text = currentText
+                let currentText = statement2.title(for: UIControlState.normal)
+                let belowText = statement3.title(for: UIControlState.normal)
+                statement2.setTitle(currentText, for: UIControlState.normal)
+                statement3.setTitle(belowText, for: UIControlState.normal)
+                
                 let currentPlayer = player2
                 let belowPlayer = player3
                 player2 = belowPlayer
                 player3 = currentPlayer
             
             case arrowDownStatement3:
-                let currentText = statement3.text
-                let belowText = statement4.text
-                statement3.text = belowText
-                statement4.text = currentText
+                let currentText = statement3.title(for: UIControlState.normal)
+                let belowText = statement4.title(for: UIControlState.normal)
+                statement3.setTitle(currentText, for: UIControlState.normal)
+                statement4.setTitle(belowText, for: UIControlState.normal)
+                
                 let currentPlayer = player3
                 let belowPlayer = player4
                 player3 = belowPlayer
                 player4 = currentPlayer
             
             case arrowUpStatement2:
-                let currentText = statement2.text
-                let aboveText = statement1.text
-                statement2.text = aboveText
-                statement1.text = currentText
+                let currentText = statement2.title(for: UIControlState.normal)
+                let aboveText = statement1.title(for: UIControlState.normal)
+                statement2.setTitle(currentText, for: UIControlState.normal)
+                statement1.setTitle(aboveText, for: UIControlState.normal)
+                
                 let currentPlayer = player2
                 let abovePlayer = player1
                 player2 = abovePlayer
                 player1 = currentPlayer
             
             case arrowUpStatement3:
-                let currentText = statement3.text
-                let aboveText = statement2.text
-                statement3.text = aboveText
-                statement2.text = currentText
+                let currentText = statement3.title(for: UIControlState.normal)
+                let aboveText = statement2.title(for: UIControlState.normal)
+                statement3.setTitle(currentText, for: UIControlState.normal)
+                statement2.setTitle(aboveText, for: UIControlState.normal)
+                
                 let currentPlayer = player3
                 let abovePlayer = player2
                 player3 = abovePlayer
                 player2 = currentPlayer
             
             case arrowUpStatement4:
-                let currentText = statement4.text
-                let aboveText = statement3.text
-                statement4.text = aboveText
-                statement3.text = currentText
+                let currentText = statement4.title(for: UIControlState.normal)
+                let aboveText = statement3.title(for: UIControlState.normal)
+                statement4.setTitle(currentText, for: UIControlState.normal)
+                statement3.setTitle(aboveText, for: UIControlState.normal)
+                
                 let currentPlayer = player4
                 let abovePlayer = player3
                 player4 = abovePlayer
@@ -311,9 +352,14 @@ class ViewController: UIViewController {
     
     @IBAction func nextRoundAction(_ sender: UIButton) {
         // check rounds
+        //checkPoints()
+        print("RanndomArrayCheck")
+        print(statements.randomStatementArray)
         countingRounds()
     
     }
+    
+    
     
     
 }
