@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		287D922D1E3CAAD500C924C9 /* buttonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287D922C1E3CAAD500C924C9 /* buttonCollectionView.swift */; };
 		289009611E34AE17006A097D /* Statements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289009601E34AE17006A097D /* Statements.swift */; };
 		289009631E34AF2D006A097D /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289009621E34AF2D006A097D /* Images.swift */; };
 		289009651E34AFAC006A097D /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289009641E34AFAC006A097D /* URL.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		287D922C1E3CAAD500C924C9 /* buttonCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttonCollectionView.swift; sourceTree = "<group>"; };
 		289009601E34AE17006A097D /* Statements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statements.swift; sourceTree = "<group>"; };
 		289009621E34AF2D006A097D /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		289009641E34AFAC006A097D /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				289009601E34AE17006A097D /* Statements.swift */,
 				3A8AADCA1DF9B85E00A2B931 /* ViewController.swift */,
 				2890096A1E387BAA006A097D /* ViewGoogle.swift */,
+				287D922C1E3CAAD500C924C9 /* buttonCollectionView.swift */,
 				289009681E387385006A097D /* ViewPlayAgain.swift */,
 				289009641E34AFAC006A097D /* URL.swift */,
 				3A8AADCC1DF9B85E00A2B931 /* Main.storyboard */,
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				287D922D1E3CAAD500C924C9 /* buttonCollectionView.swift in Sources */,
 				3A8AADCB1DF9B85E00A2B931 /* ViewController.swift in Sources */,
 				2890096B1E387BAA006A097D /* ViewGoogle.swift in Sources */,
 				289009691E387385006A097D /* ViewPlayAgain.swift in Sources */,

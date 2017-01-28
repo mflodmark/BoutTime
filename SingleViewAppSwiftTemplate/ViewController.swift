@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+private let reuseIdentifier = "buttonStatement"
 
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+
+    // MARK: Declarations
     // Outlets
-    @IBOutlet weak var statement1: UIButton!
-    @IBOutlet weak var statement2: UIButton!
-    @IBOutlet weak var statement3: UIButton!
-    @IBOutlet weak var statement4: UIButton!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var arrowDownStatement1: UIButton!
     @IBOutlet weak var arrowDownStatement2: UIButton!
@@ -40,16 +41,20 @@ class ViewController: UIViewController {
     var timeRemaining: Int = 60
     
     var playerStatement: String = ""
+    var currentSelection: String = ""
     var playerArray: [StatementSetUp] = []
+    var statementButtonsArray: [UIButton?] = []
     
     var player1: StatementSetUp? = nil
     var player2: StatementSetUp? = nil
     var player3: StatementSetUp? = nil
     var player4: StatementSetUp? = nil
 
+    var statement1: UIButton? = nil
+    var statement2: UIButton? = nil
+    var statement3: UIButton? = nil
+    var statement4: UIButton? = nil
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,6 +83,7 @@ class ViewController: UIViewController {
         nextRound.setBackgroundImage(nil, for: UIControlState.normal)
         // Unable statement buttons
         statementButtonsIsEnabledFalse()
+        setupCollectionViewCells()
     }
     
     func countingRounds() {
@@ -102,26 +108,23 @@ class ViewController: UIViewController {
     }
     
     func roundedCorners() {
-        statement1.layer.cornerRadius = 5
+        //statement1.layer.cornerRadius = 5
     }
     
     
     func statementButtonsIsEnabledFalse () {
         // Unable buttons
-        let arrowButtonsArray = [statement1, statement2, statement3, statement4]
         
-        for button in arrowButtonsArray {
+        for button in statementButtonsArray {
             button?.isEnabled = false
             button?.alpha = 1.0
-            //button?.tintColor = UIColor(043659)
         }
     }
     
     func statementButtonsIsEnabledTrue () {
         // Unable buttons
-        let arrowButtonsArray = [statement1, statement2, statement3, statement4]
         
-        for button in arrowButtonsArray {
+        for button in statementButtonsArray {
             button?.isEnabled = true
         }
     }
@@ -201,23 +204,29 @@ class ViewController: UIViewController {
         print(player2?.player ?? "Missing value")
         print(player3?.player ?? "Missing value")
         print(player4?.player ?? "Missing value")
+        print(player1?.statement ?? "Missing value")
         
     }
     
     
     func createStatementToLabel() {
         
-        statement1.setTitle("Player: \(player1?.player.rawValue) \nType: \(player1?.pointType) \nSeason: \(player1?.season.rawValue)", for: UIControlState.normal)
-        statement2.setTitle("Player: \(player2?.player.rawValue) \nType: \(player2?.pointType) \nSeason: \(player2?.season.rawValue)", for: UIControlState.normal)
-        statement3.setTitle("Player: \(player3?.player.rawValue) \nType: \(player3?.pointType) \nSeason: \(player3?.season.rawValue)", for: UIControlState.normal)
-        statement4.setTitle("Player: \(player4?.player.rawValue) \nType: \(player4?.pointType) \nSeason: \(player4?.season.rawValue)", for: UIControlState.normal)
+        statementButtonsArray.append(statement1)
+        statementButtonsArray.append(statement2)
+        statementButtonsArray.append(statement3)
+        statementButtonsArray.append(statement4)
+        
+        statement1?.setTitle(player1?.statement, for: UIControlState.normal)
+        statement2?.setTitle(player2?.statement, for: UIControlState.normal)
+        statement3?.setTitle(player3?.statement, for: UIControlState.normal)
+        statement4?.setTitle(player4?.statement, for: UIControlState.normal)
 
         
         print("Statements:")
-        print(statement1.title(for: UIControlState.normal) ?? "Missing value")
-        print(statement2.title(for: UIControlState.normal) ?? "Missing value")
-        print(statement3.title(for: UIControlState.normal) ?? "Missing value")
-        print(statement4.title(for: UIControlState.normal) ?? "Missing value")
+        print(statement1?.title(for: UIControlState.normal) ?? "Missing value")
+        print(statement2?.title(for: UIControlState.normal) ?? "Missing value")
+        print(statement3?.title(for: UIControlState.normal) ?? "Missing value")
+        print(statement4?.title(for: UIControlState.normal) ?? "Missing value")
     }
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
@@ -280,10 +289,10 @@ class ViewController: UIViewController {
     @IBAction func arrowButtonPressed(_ sender: UIButton) {
         switch sender {
             case arrowDownStatement1:
-                let currentText = statement1.title(for: UIControlState.normal)
-                let belowText = statement2.title(for: UIControlState.normal)
-                statement1.setTitle(currentText, for: UIControlState.normal)
-                statement2.setTitle(belowText, for: UIControlState.normal)
+                let currentText = player1?.statement
+                let belowText = player2?.statement
+                statement1?.setTitle(currentText, for: UIControlState.normal)
+                statement2?.setTitle(belowText, for: UIControlState.normal)
                 
                 let currentPlayer = player1
                 let belowPlayer = player2
@@ -291,10 +300,10 @@ class ViewController: UIViewController {
                 player2 = currentPlayer
             
             case arrowDownStatement2:
-                let currentText = statement2.title(for: UIControlState.normal)
-                let belowText = statement3.title(for: UIControlState.normal)
-                statement2.setTitle(currentText, for: UIControlState.normal)
-                statement3.setTitle(belowText, for: UIControlState.normal)
+                let currentText = player2?.statement
+                let belowText = player3?.statement
+                statement2?.setTitle(currentText, for: UIControlState.normal)
+                statement3?.setTitle(belowText, for: UIControlState.normal)
                 
                 let currentPlayer = player2
                 let belowPlayer = player3
@@ -302,10 +311,10 @@ class ViewController: UIViewController {
                 player3 = currentPlayer
             
             case arrowDownStatement3:
-                let currentText = statement3.title(for: UIControlState.normal)
-                let belowText = statement4.title(for: UIControlState.normal)
-                statement3.setTitle(currentText, for: UIControlState.normal)
-                statement4.setTitle(belowText, for: UIControlState.normal)
+                let currentText = player3?.statement
+                let belowText = player4?.statement
+                statement3?.setTitle(currentText, for: UIControlState.normal)
+                statement4?.setTitle(belowText, for: UIControlState.normal)
                 
                 let currentPlayer = player3
                 let belowPlayer = player4
@@ -313,10 +322,10 @@ class ViewController: UIViewController {
                 player4 = currentPlayer
             
             case arrowUpStatement2:
-                let currentText = statement2.title(for: UIControlState.normal)
-                let aboveText = statement1.title(for: UIControlState.normal)
-                statement2.setTitle(currentText, for: UIControlState.normal)
-                statement1.setTitle(aboveText, for: UIControlState.normal)
+                let currentText = player2?.statement
+                let aboveText = player1?.statement
+                statement2?.setTitle(currentText, for: UIControlState.normal)
+                statement1?.setTitle(aboveText, for: UIControlState.normal)
                 
                 let currentPlayer = player2
                 let abovePlayer = player1
@@ -324,10 +333,10 @@ class ViewController: UIViewController {
                 player1 = currentPlayer
             
             case arrowUpStatement3:
-                let currentText = statement3.title(for: UIControlState.normal)
-                let aboveText = statement2.title(for: UIControlState.normal)
-                statement3.setTitle(currentText, for: UIControlState.normal)
-                statement2.setTitle(aboveText, for: UIControlState.normal)
+                let currentText = player3?.statement
+                let aboveText = player2?.statement
+                statement3?.setTitle(currentText, for: UIControlState.normal)
+                statement2?.setTitle(aboveText, for: UIControlState.normal)
                 
                 let currentPlayer = player3
                 let abovePlayer = player2
@@ -335,10 +344,10 @@ class ViewController: UIViewController {
                 player2 = currentPlayer
             
             case arrowUpStatement4:
-                let currentText = statement4.title(for: UIControlState.normal)
-                let aboveText = statement3.title(for: UIControlState.normal)
-                statement4.setTitle(currentText, for: UIControlState.normal)
-                statement3.setTitle(aboveText, for: UIControlState.normal)
+                let currentText = player4?.statement
+                let aboveText = player3?.statement
+                statement4?.setTitle(currentText, for: UIControlState.normal)
+                statement3?.setTitle(aboveText, for: UIControlState.normal)
                 
                 let currentPlayer = player4
                 let abovePlayer = player3
@@ -359,7 +368,58 @@ class ViewController: UIViewController {
     
     }
     
+    // MARK: - UICollectionView
     
+    func setupCollectionViewCells() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        let padding: CGFloat = 10
+        layout.itemSize = CGSize(width: 316 - padding, height: 100 - padding)
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+        
+        collectionView.collectionViewLayout = layout
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return playerArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! buttonCollectionView
+        
+        // find corrects button to shows
+        let item = statementButtonsArray[indexPath.row]
+
+        cell.buttonView = item
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        updateCellBackgroundColor(indexPath, selected: true)
+        // current selection
+        currentSelection = playerArray[indexPath.row].statement
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        updateCellBackgroundColor(indexPath, selected: false)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        updateCellBackgroundColor(indexPath, selected: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        updateCellBackgroundColor(indexPath, selected: false)
+    }
+    
+    func updateCellBackgroundColor(_ indexPath: IndexPath, selected: Bool) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.contentView.backgroundColor = selected ? UIColor(red: 41/255.0, green: 211/255.0, blue: 241/255.0, alpha: 1.0) : UIColor.clear
+        }
+    }
+
     
     
 }
