@@ -41,6 +41,7 @@ class ViewController: UIViewController {
     
     var playerStatement: String = ""
     var playerArray: [StatementSetUp] = []
+    var statementButtonsArray: [UIButton?] = []
     
     var player1: StatementSetUp? = nil
     var player2: StatementSetUp? = nil
@@ -108,9 +109,7 @@ class ViewController: UIViewController {
     
     func statementButtonsIsEnabledFalse () {
         // Unable buttons
-        let arrowButtonsArray = [statement1, statement2, statement3, statement4]
-        
-        for button in arrowButtonsArray {
+        for button in statementButtonsArray {
             button?.isEnabled = false
             button?.alpha = 1.0
             //button?.tintColor = UIColor(043659)
@@ -119,9 +118,7 @@ class ViewController: UIViewController {
     
     func statementButtonsIsEnabledTrue () {
         // Unable buttons
-        let arrowButtonsArray = [statement1, statement2, statement3, statement4]
-        
-        for button in arrowButtonsArray {
+        for button in statementButtonsArray {
             button?.isEnabled = true
         }
     }
@@ -207,10 +204,15 @@ class ViewController: UIViewController {
     
     func createStatementToLabel() {
         
-        statement1.setTitle("Player: \(player1?.player.rawValue) \nType: \(player1?.pointType) \nSeason: \(player1?.season.rawValue)", for: UIControlState.normal)
-        statement2.setTitle("Player: \(player2?.player.rawValue) \nType: \(player2?.pointType) \nSeason: \(player2?.season.rawValue)", for: UIControlState.normal)
-        statement3.setTitle("Player: \(player3?.player.rawValue) \nType: \(player3?.pointType) \nSeason: \(player3?.season.rawValue)", for: UIControlState.normal)
-        statement4.setTitle("Player: \(player4?.player.rawValue) \nType: \(player4?.pointType) \nSeason: \(player4?.season.rawValue)", for: UIControlState.normal)
+        statementButtonsArray.append(statement1)
+        statementButtonsArray.append(statement2)
+        statementButtonsArray.append(statement3)
+        statementButtonsArray.append(statement4)
+        
+        statement1?.setTitle(player1?.statement, for: UIControlState.normal)
+        statement2?.setTitle(player2?.statement, for: UIControlState.normal)
+        statement3?.setTitle(player3?.statement, for: UIControlState.normal)
+        statement4?.setTitle(player4?.statement, for: UIControlState.normal)
 
         
         print("Statements:")
@@ -279,71 +281,71 @@ class ViewController: UIViewController {
     
     @IBAction func arrowButtonPressed(_ sender: UIButton) {
         switch sender {
-            case arrowDownStatement1:
-                let currentText = statement1.title(for: UIControlState.normal)
-                let belowText = statement2.title(for: UIControlState.normal)
-                statement1.setTitle(currentText, for: UIControlState.normal)
-                statement2.setTitle(belowText, for: UIControlState.normal)
-                
-                let currentPlayer = player1
-                let belowPlayer = player2
-                player1 = belowPlayer
-                player2 = currentPlayer
+        case arrowDownStatement1:
+            let currentText = player1?.statement
+            let belowText = player2?.statement
+            statement1?.setTitle(currentText, for: UIControlState.normal)
+            statement2?.setTitle(belowText, for: UIControlState.normal)
             
-            case arrowDownStatement2:
-                let currentText = statement2.title(for: UIControlState.normal)
-                let belowText = statement3.title(for: UIControlState.normal)
-                statement2.setTitle(currentText, for: UIControlState.normal)
-                statement3.setTitle(belowText, for: UIControlState.normal)
-                
-                let currentPlayer = player2
-                let belowPlayer = player3
-                player2 = belowPlayer
-                player3 = currentPlayer
+            let currentPlayer = player1
+            let belowPlayer = player2
+            player1 = belowPlayer
+            player2 = currentPlayer
             
-            case arrowDownStatement3:
-                let currentText = statement3.title(for: UIControlState.normal)
-                let belowText = statement4.title(for: UIControlState.normal)
-                statement3.setTitle(currentText, for: UIControlState.normal)
-                statement4.setTitle(belowText, for: UIControlState.normal)
-                
-                let currentPlayer = player3
-                let belowPlayer = player4
-                player3 = belowPlayer
-                player4 = currentPlayer
+        case arrowDownStatement2:
+            let currentText = player2?.statement
+            let belowText = player3?.statement
+            statement2?.setTitle(currentText, for: UIControlState.normal)
+            statement3?.setTitle(belowText, for: UIControlState.normal)
             
-            case arrowUpStatement2:
-                let currentText = statement2.title(for: UIControlState.normal)
-                let aboveText = statement1.title(for: UIControlState.normal)
-                statement2.setTitle(currentText, for: UIControlState.normal)
-                statement1.setTitle(aboveText, for: UIControlState.normal)
-                
-                let currentPlayer = player2
-                let abovePlayer = player1
-                player2 = abovePlayer
-                player1 = currentPlayer
+            let currentPlayer = player2
+            let belowPlayer = player3
+            player2 = belowPlayer
+            player3 = currentPlayer
             
-            case arrowUpStatement3:
-                let currentText = statement3.title(for: UIControlState.normal)
-                let aboveText = statement2.title(for: UIControlState.normal)
-                statement3.setTitle(currentText, for: UIControlState.normal)
-                statement2.setTitle(aboveText, for: UIControlState.normal)
-                
-                let currentPlayer = player3
-                let abovePlayer = player2
-                player3 = abovePlayer
-                player2 = currentPlayer
+        case arrowDownStatement3:
+            let currentText = player3?.statement
+            let belowText = player4?.statement
+            statement3?.setTitle(currentText, for: UIControlState.normal)
+            statement4?.setTitle(belowText, for: UIControlState.normal)
             
-            case arrowUpStatement4:
-                let currentText = statement4.title(for: UIControlState.normal)
-                let aboveText = statement3.title(for: UIControlState.normal)
-                statement4.setTitle(currentText, for: UIControlState.normal)
-                statement3.setTitle(aboveText, for: UIControlState.normal)
-                
-                let currentPlayer = player4
-                let abovePlayer = player3
-                player4 = abovePlayer
-                player3 = currentPlayer
+            let currentPlayer = player3
+            let belowPlayer = player4
+            player3 = belowPlayer
+            player4 = currentPlayer
+            
+        case arrowUpStatement2:
+            let currentText = player2?.statement
+            let aboveText = player1?.statement
+            statement2?.setTitle(currentText, for: UIControlState.normal)
+            statement1?.setTitle(aboveText, for: UIControlState.normal)
+            
+            let currentPlayer = player2
+            let abovePlayer = player1
+            player2 = abovePlayer
+            player1 = currentPlayer
+            
+        case arrowUpStatement3:
+            let currentText = player3?.statement
+            let aboveText = player2?.statement
+            statement3?.setTitle(currentText, for: UIControlState.normal)
+            statement2?.setTitle(aboveText, for: UIControlState.normal)
+            
+            let currentPlayer = player3
+            let abovePlayer = player2
+            player3 = abovePlayer
+            player2 = currentPlayer
+            
+        case arrowUpStatement4:
+            let currentText = player4?.statement
+            let aboveText = player3?.statement
+            statement4?.setTitle(currentText, for: UIControlState.normal)
+            statement3?.setTitle(aboveText, for: UIControlState.normal)
+            
+            let currentPlayer = player4
+            let abovePlayer = player3
+            player4 = abovePlayer
+            player3 = currentPlayer
             
             default:
                 print("Something went wrong!")
