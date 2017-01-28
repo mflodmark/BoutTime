@@ -174,7 +174,12 @@ class ViewController: UIViewController {
             // Add random statement to labels
             let indexOfSelectedStatement = Statements().randomStatement()
             let randomStatement = statements.statementsArray[indexOfSelectedStatement]
-
+            
+            // Check unique random number
+            if statements.checkUsedNumbers(number: indexOfSelectedStatement) == true {
+                // Find new ranodm number. Not unique..
+                randomStatements()
+            } 
 
             // Add statement to arrays
             statements.randomStatementArray.append(randomStatement)
@@ -363,14 +368,7 @@ class ViewController: UIViewController {
     }
     
 
-    @IBAction func toUrlView(_ sender: UIButton) {
-        
-
-    }
-    
-    
     // MARK: Segues
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.

@@ -105,6 +105,27 @@ class Statements {
         return indexOfSelectedStatement
     }
     
+    var usedNumbers: [Int] = []
+    var used: Bool = false
+
+    func checkUsedNumbers(number: Int) -> Bool {
+        
+        //Check if it's in the usedNumbers array
+        for usedNumber in usedNumbers {
+            if usedNumber == number {
+                used = true
+            } else {
+                used = false
+            }
+        }
+        
+        // append used number tp array
+        usedNumbers.append(number)
+
+        //Return true or false
+        return used
+    }
+    
     func addToRandomStatementArray(statement: StatementSetUp) {
         randomStatementArray.append(statement)
     }
