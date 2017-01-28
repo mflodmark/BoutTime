@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     var imageButtonNonSelected: UIImage? = nil
     let statements = Statements()
     let viewPlayAgain = ViewPlayAgain()
+    let urlView = URLview()
     var timer = Timer()
     
     var checkedPoints: Bool = false
@@ -67,16 +68,19 @@ class ViewController: UIViewController {
     // MARK: - Functions
     
     func setUpView() {
-        roundedCorners()
         randomStatements()
         timerStart()
         buttonsIsEnabledTrue()
         createStatementToLabel()
+        roundedCorners()
+
         // Clear random array
         statements.randomStatementArray.removeAll()
         labelNextRound.text = "Shake to complete"
+        
         // Set default backround image
         nextRound.setBackgroundImage(nil, for: UIControlState.normal)
+        
         // Unable statement buttons
         statementButtonsIsEnabledFalse()
     }
@@ -95,15 +99,13 @@ class ViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "playAgainSegue" {
-            //segue.destination
-        }
-    }
+
     
     func roundedCorners() {
-        statement1.layer.cornerRadius = 5
+        // FIXME: ROunded corners on just one side
+        for button in statementButtonsArray {
+            button?.layer.cornerRadius = 5
+        }
     }
     
     
@@ -112,7 +114,6 @@ class ViewController: UIViewController {
         for button in statementButtonsArray {
             button?.isEnabled = false
             button?.alpha = 1.0
-            //button?.tintColor = UIColor(043659)
         }
     }
     
@@ -240,8 +241,8 @@ class ViewController: UIViewController {
     
     func checkPoints() {
         let array = statements.randomStatementArray
-        
-        if player1?.points == statements.randomStatementArray[0].points && player2?.points == statements.randomStatementArray[1].points && player3?.points == statements.randomStatementArray[2].points && player4?.points == statements.randomStatementArray[3].points {
+        // ändra till array
+        if player1?.points == array[0].points && player2?.points == array[1].points && player3?.points == array[2].points && player4?.points == array[3].points {
             checkedPoints = true
         } else {
             checkedPoints = false
@@ -284,8 +285,8 @@ class ViewController: UIViewController {
         case arrowDownStatement1:
             let currentText = player1?.statement
             let belowText = player2?.statement
-            statement1?.setTitle(currentText, for: UIControlState.normal)
-            statement2?.setTitle(belowText, for: UIControlState.normal)
+            statement1?.setTitle(belowText, for: UIControlState.normal)
+            statement2?.setTitle(currentText, for: UIControlState.normal)
             
             let currentPlayer = player1
             let belowPlayer = player2
@@ -295,8 +296,8 @@ class ViewController: UIViewController {
         case arrowDownStatement2:
             let currentText = player2?.statement
             let belowText = player3?.statement
-            statement2?.setTitle(currentText, for: UIControlState.normal)
-            statement3?.setTitle(belowText, for: UIControlState.normal)
+            statement2?.setTitle(belowText, for: UIControlState.normal)
+            statement3?.setTitle(currentText, for: UIControlState.normal)
             
             let currentPlayer = player2
             let belowPlayer = player3
@@ -306,8 +307,8 @@ class ViewController: UIViewController {
         case arrowDownStatement3:
             let currentText = player3?.statement
             let belowText = player4?.statement
-            statement3?.setTitle(currentText, for: UIControlState.normal)
-            statement4?.setTitle(belowText, for: UIControlState.normal)
+            statement3?.setTitle(belowText, for: UIControlState.normal)
+            statement4?.setTitle(currentText, for: UIControlState.normal)
             
             let currentPlayer = player3
             let belowPlayer = player4
@@ -317,8 +318,8 @@ class ViewController: UIViewController {
         case arrowUpStatement2:
             let currentText = player2?.statement
             let aboveText = player1?.statement
-            statement2?.setTitle(currentText, for: UIControlState.normal)
-            statement1?.setTitle(aboveText, for: UIControlState.normal)
+            statement2?.setTitle(aboveText, for: UIControlState.normal)
+            statement1?.setTitle(currentText, for: UIControlState.normal)
             
             let currentPlayer = player2
             let abovePlayer = player1
@@ -328,8 +329,8 @@ class ViewController: UIViewController {
         case arrowUpStatement3:
             let currentText = player3?.statement
             let aboveText = player2?.statement
-            statement3?.setTitle(currentText, for: UIControlState.normal)
-            statement2?.setTitle(aboveText, for: UIControlState.normal)
+            statement3?.setTitle(aboveText, for: UIControlState.normal)
+            statement2?.setTitle(currentText, for: UIControlState.normal)
             
             let currentPlayer = player3
             let abovePlayer = player2
@@ -339,8 +340,8 @@ class ViewController: UIViewController {
         case arrowUpStatement4:
             let currentText = player4?.statement
             let aboveText = player3?.statement
-            statement4?.setTitle(currentText, for: UIControlState.normal)
-            statement3?.setTitle(aboveText, for: UIControlState.normal)
+            statement4?.setTitle(aboveText, for: UIControlState.normal)
+            statement3?.setTitle(currentText, for: UIControlState.normal)
             
             let currentPlayer = player4
             let abovePlayer = player3
@@ -355,11 +356,37 @@ class ViewController: UIViewController {
     @IBAction func nextRoundAction(_ sender: UIButton) {
         // check rounds
         //checkPoints()
-        print("RanndomArrayCheck")
+        print("RandomArrayCheck")
         print(statements.randomStatementArray)
         countingRounds()
     
     }
+    
+
+    @IBAction func toUrlView(_ sender: UIButton) {
+        
+
+    }
+    
+    
+    // MARK: Segues
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // FIXME: Unwrapping
+        if segue.identifier == "statement1segue" {
+            urlView.showUrl(player: (player1?.player.rawValue)!)
+        } else if segue.identifier == "statement2segue" {
+            urlView.showUrl(player: (player2?.player.rawValue)!)
+        } else if segue.identifier == "statement3segue" {
+            urlView.showUrl(player: (player3?.player.rawValue)!)
+        }else if segue.identifier == "statement4segue" {
+            urlView.showUrl(player: (player4?.player.rawValue)!)
+        }
+
+    }
+    
     
     
     

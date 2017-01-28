@@ -13,7 +13,7 @@ import GameKit
 enum Player: String {
     case crosby = "Sidney Crosby"
     case pachioretty = "Max Pacioretty"
-    case benn = "Jamei Benn"
+    case benn = "Jamie Benn"
     case toews = "Jonathan Toews"
     case mcdavid = "Connor McDavid"
     case malkin = "Evgeni Malkin"
