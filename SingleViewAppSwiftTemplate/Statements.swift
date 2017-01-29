@@ -130,10 +130,6 @@ class Statements {
         randomStatementArray.append(statement)
     }
     
-    func removeFromStatementArray(index: Int) {
-        statementsArray.remove(at: index)
-    }
-    
     func sortPointsOfRandomStatementArray() {
         // Fix correct order of statement, largest point at index 0
         randomStatementArray.sort { (one: StatementSetUp, two: StatementSetUp) -> Bool in

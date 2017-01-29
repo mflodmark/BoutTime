@@ -68,14 +68,15 @@ class ViewController: UIViewController {
     // MARK: - Functions
     
     func setUpView() {
+        // Clear random array
+        statements.randomStatementArray.removeAll()
+        
         randomStatements()
         timerStart()
         buttonsIsEnabledTrue()
         createStatementToLabel()
         roundedCorners()
 
-        // Clear random array
-        statements.randomStatementArray.removeAll()
         labelNextRound.text = "Shake to complete"
         
         // Set default backround image
@@ -246,22 +247,24 @@ class ViewController: UIViewController {
     
     func checkPoints() {
         let array = statements.randomStatementArray
-        // ändra till array
-        if player1?.points == array[0].points && player2?.points == array[1].points && player3?.points == array[2].points && player4?.points == array[3].points {
-            checkedPoints = true
-        } else {
-            checkedPoints = false
+        print(statements.randomStatementArray.count)
+
+        if let point1 = player1?.points, let point2 = player2?.points, let point3 = player3?.points,  let point4 = player4?.points {
+            if point1 == array[0].points && point2 == array[1].points && point3 == array[2].points && point4 == array[3].points {
+                checkedPoints = true
+            } else {
+                checkedPoints = false
+            }
+            print("Points:")
+            print("\(point1)")
+            print("\(array[0].points)")
         }
-        
-        print("Points:")
-        print("\(player1?.points)")
-        print("\(array[0].points)")
-        
     }
     
     func checkLabelToPoints() {
         
-        
+        checkPoints()
+
         if checkedPoints == true {
             nextRound.setBackgroundImage(#imageLiteral(resourceName: "next_round_success"), for: UIControlState.normal)
             pointsPerRound += 1
@@ -285,6 +288,7 @@ class ViewController: UIViewController {
     
     // MARK: - Actions
     
+    // Switch player & statement when an arrow is pressed
     @IBAction func arrowButtonPressed(_ sender: UIButton) {
         switch sender {
         case arrowDownStatement1:
@@ -360,7 +364,6 @@ class ViewController: UIViewController {
     
     @IBAction func nextRoundAction(_ sender: UIButton) {
         // check rounds
-        //checkPoints()
         print("RandomArrayCheck")
         print(statements.randomStatementArray)
         countingRounds()

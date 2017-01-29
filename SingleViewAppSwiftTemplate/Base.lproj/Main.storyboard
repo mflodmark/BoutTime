@@ -117,7 +117,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Ayi-aW-q5Z"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <state key="normal" title="Stat2">
                                     <color key="titleColor" red="0.079930968582630157" green="0.21712946891784668" blue="0.33692061901092529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -131,7 +131,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Nso-DD-6Ay"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <state key="normal" title="Stat3">
                                     <color key="titleColor" red="0.079930968582630157" green="0.21712946891784668" blue="0.33692061901092529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -145,7 +145,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="CnQ-qi-MHt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <state key="normal" title="Stat4">
                                     <color key="titleColor" red="0.079930968582630157" green="0.21712946891784668" blue="0.33692061901092529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -156,7 +156,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE0-Ap-Ifz">
                                 <rect key="frame" x="331" y="187" width="28" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="28" id="9Hj-I4-C6U"/>
                                     <constraint firstAttribute="height" constant="50" id="Po6-wp-oQ4"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="down_half"/>
