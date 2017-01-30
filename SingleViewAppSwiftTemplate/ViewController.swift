@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var statement2: UIButton!
     @IBOutlet weak var statement3: UIButton!
     @IBOutlet weak var statement4: UIButton!
-    @IBOutlet weak var segueButton: UIButton!
     
     @IBOutlet weak var arrowDownStatement1: UIButton!
     @IBOutlet weak var arrowDownStatement2: UIButton!
@@ -69,8 +68,9 @@ class ViewController: UIViewController {
     // MARK: - Functions
     
     func setUpView() {
-        // Clear random array
+        // Clear arrays
         statements.randomStatementArray.removeAll()
+        playerArray.removeAll()
         
         randomStatements()
         timerStart()
@@ -87,6 +87,7 @@ class ViewController: UIViewController {
         statementButtonsIsEnabledFalse()
     }
     
+    
     func countingRounds() {
         if countRounds < 6 {
             countRounds += 1
@@ -98,8 +99,10 @@ class ViewController: UIViewController {
             // restart counter of points
             pointsPerRound = 0
             //performSegue(withIdentifier: "playAgainSegue" , sender: nextRound)
-            segueButton.isHidden = false
+            present(viewPlayAgain, animated: true, completion: nil)
+            //func presentViewControllerAsModalWindow(_ viewController: ViewPlayAgain)
         }
+        
     }
     
 
@@ -175,21 +178,12 @@ class ViewController: UIViewController {
     func randomStatements() {
         for _ in 1...4 {
             // Add random statement to labels
-            let indexOfSelectedStatement = Statements().randomStatement()
+            let indexOfSelectedStatement = statements.randomStatement()
             let randomStatement = statements.statementsArray[indexOfSelectedStatement]
-            
-            // Check unique random number
-            if statements.checkUsedNumbers(number: indexOfSelectedStatement) == true {
-                // Find new ranodm number. Not unique..
-                randomStatements()
-            } 
 
             // Add statement to arrays
             statements.randomStatementArray.append(randomStatement)
             playerArray.append(randomStatement)
-
-            // Remove statement from original array
-            //statements.statementsArray.remove(at: indexOfSelectedStatement)
         }
         
         player1 = playerArray[0]
@@ -388,12 +382,6 @@ class ViewController: UIViewController {
         }else if segue.identifier == "statement4segue" {
             urlView.showUrl(player: (player4?.player.rawValue)!)
         }
-
     }
-    
-    
-    
-    
-    
 }
 

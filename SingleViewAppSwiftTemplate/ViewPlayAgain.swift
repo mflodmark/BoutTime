@@ -25,7 +25,7 @@ class ViewPlayAgain: UIViewController {
     }
     // FIXME: fatal error
     func showScore(points: Int, rounds: Int) {
-        score.text = "\(points)/\(rounds)"
+        //score.text = "\(points)/\(rounds)"
     }
     
      

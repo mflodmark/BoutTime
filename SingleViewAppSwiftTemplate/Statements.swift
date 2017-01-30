@@ -100,7 +100,12 @@ class Statements {
 
     
     func randomStatement() -> Int {
-        let indexOfSelectedStatement = GKRandomSource.sharedRandom().nextInt(upperBound: statementsArray.count)
+        var indexOfSelectedStatement = GKRandomSource.sharedRandom().nextInt(upperBound: statementsArray.count)
+        
+        // Check unique random number
+        while checkUsedNumbers(number: indexOfSelectedStatement) == true {
+            indexOfSelectedStatement = GKRandomSource.sharedRandom().nextInt(upperBound: statementsArray.count)
+        }
         
         return indexOfSelectedStatement
     }
@@ -109,6 +114,7 @@ class Statements {
     var used: Bool = false
 
     func checkUsedNumbers(number: Int) -> Bool {
+        used = false
         
         //Check if it's in the usedNumbers array
         for usedNumber in usedNumbers {

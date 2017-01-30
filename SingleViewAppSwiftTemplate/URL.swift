@@ -43,9 +43,13 @@ class URLview: UIViewController {
 
     func showUrl(player: String) {
         // Check enum with players from statement.swift
-        webView.loadRequest(URLRequest(url: URL(string: "https://www.nhl.com/player/sidney-crosby-8471675")!))
+        //webView.loadRequest(URLRequest(url: URL(string: "https://nhl.com/player/sidney-crosby-8471675")!))
 
-        //webView.loadRequest("https://www.nhl.com/player/sidney-crosby-8471675")
+        //webView.loadRequest("https://nhl.com/player/sidney-crosby-8471675")
+        if let url = URL(string: "http://apple.com") {
+            let request = URLRequest(url: url)
+            webView.loadRequest(request)
+        }
     }
     
 
