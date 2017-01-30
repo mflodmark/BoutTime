@@ -23,9 +23,9 @@ class ViewPlayAgain: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    // FIXME: fatal error
     func showScore(points: Int, rounds: Int) {
-        //score.text = "\(points)\(rounds)"
+        score.text = "\(points)/\(rounds)"
     }
     
      

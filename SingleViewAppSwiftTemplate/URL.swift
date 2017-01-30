@@ -1,4 +1,4 @@
-//
+ //
 //  URL.swift
 //  BoutTime
 //
@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class URLview: UIViewController {
+    @IBOutlet weak var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,13 +22,34 @@ class URLview: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    enum Player: String {
+        case crosby = "Sidney Crosby"
+        case pacioretty = "Max Pacioretty"
+        case benn = "Jamie Benn"
+        case toews = "Jonathan Toews"
+        case mcdavid = "Connor McDavid"
+        case malkin = "Evgeni Malkin"
+        case karlsson = "Erik Karlsson"
+        case burns = "Brent Burns"
+        case kane = "Patrick Kane"
+        case tarasenko = "Vladimir Tarasenko"
+        case scheifele = "Mark Scheifele"
+        case panarin = "Artemi Panarin"
+        case kucherov = "Nikita Kucherov"
+        case pavelski = "Joe Pavelski"
+    }
 
     func showUrl(player: String) {
         // Check enum with players from statement.swift
-        print("ShowURL")
+        webView.loadRequest(URLRequest(url: URL(string: "https://www.nhl.com/player/sidney-crosby-8471675")!))
+
+        //webView.loadRequest("https://www.nhl.com/player/sidney-crosby-8471675")
     }
     
-     
+
+    
      // MARK: - Navigation
 
     
@@ -35,3 +58,5 @@ class URLview: UIViewController {
     }
     
 }
+ 
+

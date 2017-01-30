@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -97,13 +97,14 @@
                                     <action selector="arrowButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Axl-g7-tWc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DoX-5T-zNX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DoX-5T-zNX">
                                 <rect key="frame" x="16" y="28" width="316" height="100"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="5S3-Of-T35"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Stat1">
                                     <color key="titleColor" red="0.079930968582630157" green="0.21712946891784668" blue="0.33692061901092529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -111,13 +112,14 @@
                                     <segue destination="ugP-Om-i64" kind="presentation" identifier="statement1segue" id="cDt-Zz-MpS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="8dS-cc-aTQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="8dS-cc-aTQ">
                                 <rect key="frame" x="16" y="137" width="316" height="100"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Ayi-aW-q5Z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Stat2">
                                     <color key="titleColor" red="0.079930968582630157" green="0.21712946891784668" blue="0.33692061901092529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -125,13 +127,14 @@
                                     <segue destination="ugP-Om-i64" kind="presentation" identifier="statement2segue" id="rXo-zb-zoF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Jv5-Zx-geP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Jv5-Zx-geP">
                                 <rect key="frame" x="16" y="244" width="316" height="100"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Nso-DD-6Ay"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Stat3">
                                     <color key="titleColor" red="0.079930968582630157" green="0.21712946891784668" blue="0.33692061901092529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -139,13 +142,14 @@
                                     <segue destination="ugP-Om-i64" kind="presentation" identifier="statement3segue" id="10S-M8-6KE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zvh-Mk-rZc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zvh-Mk-rZc">
                                 <rect key="frame" x="16" y="352" width="316" height="100"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="CnQ-qi-MHt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Stat4">
                                     <color key="titleColor" red="0.079930968582630157" green="0.21712946891784668" blue="0.33692061901092529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -161,6 +165,14 @@
                                 <state key="normal" backgroundImage="down_half"/>
                                 <connections>
                                     <action selector="arrowButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hgx-2S-Cu6"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQ7-tZ-WCd">
+                                <rect key="frame" x="118" y="465" width="138" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="Oed-Oa-ezX" kind="presentation" id="aas-V2-E7y"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -212,6 +224,7 @@
                         <outlet property="arrowUpStatement4" destination="Kk1-dE-m9l" id="ZZU-Rd-w1o"/>
                         <outlet property="labelNextRound" destination="uB2-qy-0LK" id="VcL-re-ZfK"/>
                         <outlet property="nextRound" destination="Cet-zb-rDx" id="yFN-cX-7aJ"/>
+                        <outlet property="segueButton" destination="zQ7-tZ-WCd" id="rNh-Lp-jIM"/>
                         <outlet property="statement1" destination="DoX-5T-zNX" id="wL7-At-U0y"/>
                         <outlet property="statement2" destination="8dS-cc-aTQ" id="3Os-IU-ncU"/>
                         <outlet property="statement3" destination="Jv5-Zx-geP" id="vCH-LC-4Dw"/>
@@ -305,13 +318,21 @@
                                     <action selector="dismiss:" destination="ugP-Om-i64" eventType="touchUpInside" id="JOr-d0-HIf"/>
                                 </connections>
                             </button>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jbW-dA-WVR">
+                                <rect key="frame" x="0.0" y="49" width="375" height="618"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="0.079930968582630157" green="0.21712946891784668" blue="0.33692061901092529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="jbW-dA-WVR" id="1yV-lN-qnR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQE-cY-Wui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="969"/>
+            <point key="canvasLocation" x="852" y="968.36581709145435"/>
         </scene>
     </scenes>
     <resources>

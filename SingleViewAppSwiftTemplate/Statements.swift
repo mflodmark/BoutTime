@@ -12,7 +12,7 @@ import GameKit
 
 enum Player: String {
     case crosby = "Sidney Crosby"
-    case pachioretty = "Max Pacioretty"
+    case pacioretty = "Max Pacioretty"
     case benn = "Jamie Benn"
     case toews = "Jonathan Toews"
     case mcdavid = "Connor McDavid"
@@ -64,12 +64,12 @@ class Statements {
         createStatement(player: .crosby, pointType: .PIMs, points: 42, season: .fiftheenSixteen),
         createStatement(player: .crosby, pointType: .PlusMinus, points: 19 , season: .fiftheenSixteen),
         createStatement(player: .crosby, pointType: .Points, points: 85, season: .fiftheenSixteen),
-        createStatement(player: .pachioretty, pointType: .Assists, points: 34, season: .fiftheenSixteen),
-        createStatement(player: .pachioretty, pointType: .Goals, points: 30, season: .fiftheenSixteen),
-        createStatement(player: .pachioretty, pointType: .Shots, points: 303, season: .fiftheenSixteen),
-        createStatement(player: .pachioretty, pointType: .PIMs, points: 34, season: .fiftheenSixteen),
-        createStatement(player: .pachioretty, pointType: .PlusMinus, points: -10, season: .fiftheenSixteen),
-        createStatement(player: .pachioretty, pointType: .Points, points: 64, season: .fiftheenSixteen),
+        createStatement(player: .pacioretty, pointType: .Assists, points: 34, season: .fiftheenSixteen),
+        createStatement(player: .pacioretty, pointType: .Goals, points: 30, season: .fiftheenSixteen),
+        createStatement(player: .pacioretty, pointType: .Shots, points: 303, season: .fiftheenSixteen),
+        createStatement(player: .pacioretty, pointType: .PIMs, points: 34, season: .fiftheenSixteen),
+        createStatement(player: .pacioretty, pointType: .PlusMinus, points: -10, season: .fiftheenSixteen),
+        createStatement(player: .pacioretty, pointType: .Points, points: 64, season: .fiftheenSixteen),
         createStatement(player: .benn, pointType: .Assists, points: 48, season: .fiftheenSixteen),
         createStatement(player: .benn, pointType: .Goals, points: 41, season: .fiftheenSixteen),
         createStatement(player: .benn, pointType: .Shots, points: 247, season: .fiftheenSixteen),

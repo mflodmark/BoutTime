@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var statement2: UIButton!
     @IBOutlet weak var statement3: UIButton!
     @IBOutlet weak var statement4: UIButton!
+    @IBOutlet weak var segueButton: UIButton!
     
     @IBOutlet weak var arrowDownStatement1: UIButton!
     @IBOutlet weak var arrowDownStatement2: UIButton!
@@ -96,7 +97,8 @@ class ViewController: UIViewController {
 
             // restart counter of points
             pointsPerRound = 0
-            performSegue(withIdentifier: "playAgainSegue" , sender: nextRound)
+            //performSegue(withIdentifier: "playAgainSegue" , sender: nextRound)
+            segueButton.isHidden = false
         }
     }
     
@@ -249,6 +251,7 @@ class ViewController: UIViewController {
         let array = statements.randomStatementArray
         print(statements.randomStatementArray.count)
 
+        // Unwrap optional player?.point to check if the answer is correct or not
         if let point1 = player1?.points, let point2 = player2?.points, let point3 = player3?.points,  let point4 = player4?.points {
             if point1 == array[0].points && point2 == array[1].points && point3 == array[2].points && point4 == array[3].points {
                 checkedPoints = true
