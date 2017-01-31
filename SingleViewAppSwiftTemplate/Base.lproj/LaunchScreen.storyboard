@@ -23,10 +23,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="XdD-7w-yaw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="383" height="667"/>
                                 <color key="backgroundColor" red="0.079930968582630157" green="0.21712946891784668" blue="0.33692061901092529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="XdD-7w-yaw" secondAttribute="height" multiplier="375:667" id="gd3-k2-r5n"/>
+                                    <constraint firstAttribute="width" secondItem="XdD-7w-yaw" secondAttribute="height" multiplier="375:667" constant="8" id="gd3-k2-r5n"/>
                                 </constraints>
                             </imageView>
                         </subviews>

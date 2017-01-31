@@ -110,21 +110,19 @@ class Statements {
         return indexOfSelectedStatement
     }
     
-    var usedNumbers: [Int] = []
+    // default number so that the app doesnt crash
+    var usedNumbers: [Int] = [900]
     var used: Bool = false
 
-    func checkUsedNumbers(number: Int) -> Bool {
-        used = false
-        
+    func checkUsedNumbers(number: Int) -> Bool {        
         //Check if it's in the usedNumbers array
+        used = false
         for usedNumber in usedNumbers {
             if usedNumber == number {
                 used = true
-            } else {
-                used = false
             }
         }
-        
+                
         // append used number tp array
         usedNumbers.append(number)
 

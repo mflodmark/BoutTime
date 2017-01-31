@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import SingleViewAppSwiftTemplate
+//@testable import SingleViewAppSwiftTemplate
 
 class SingleViewAppSwiftTemplateTests: XCTestCase {
     

@@ -85,25 +85,31 @@ class ViewController: UIViewController {
         
         // Unable statement buttons
         statementButtonsIsEnabledFalse()
+
     }
     
     
     func countingRounds() {
+        countRounds += 1
         if countRounds < 6 {
-            countRounds += 1
             setUpView()
+            // no segue for playAgainSegue
+            segue = false
         } else {
-            // show score and let the player decide if starting new play
             viewPlayAgain.showScore(points: pointsPerRound, rounds: countRounds)
-
-            // restart counter of points
+            
+            // restart counters
             pointsPerRound = 0
-            //performSegue(withIdentifier: "playAgainSegue" , sender: nextRound)
-            present(viewPlayAgain, animated: true, completion: nil)
-            //func presentViewControllerAsModalWindow(_ viewController: ViewPlayAgain)
+            countRounds = 0
+            
+            // clear usedNumber array
+            statements.usedNumbers.removeAll()
+            
+            // segue for playAgainSegue
+            segue = true
         }
-        
     }
+
     
 
     
@@ -118,15 +124,14 @@ class ViewController: UIViewController {
     func statementButtonsIsEnabledFalse () {
         // Unable buttons
         for button in statementButtonsArray {
-            button?.isEnabled = false
-            button?.alpha = 1.0
+            button?.isUserInteractionEnabled = false
         }
     }
     
     func statementButtonsIsEnabledTrue () {
-        // Unable buttons
+        // Enable buttons
         for button in statementButtonsArray {
-            button?.isEnabled = true
+            button?.isUserInteractionEnabled = true
         }
     }
     
@@ -137,8 +142,7 @@ class ViewController: UIViewController {
         let arrowButtonsArray = [arrowUpStatement2, arrowUpStatement3, arrowUpStatement4, arrowDownStatement1, arrowDownStatement2, arrowDownStatement3]
         
         for button in arrowButtonsArray {
-            button?.isEnabled = false
-            button?.alpha = 1.0
+            button?.isUserInteractionEnabled = false
         }
     }
     
@@ -147,7 +151,7 @@ class ViewController: UIViewController {
         let arrowButtonsArray = [arrowUpStatement2, arrowUpStatement3, arrowUpStatement4, arrowDownStatement1, arrowDownStatement2, arrowDownStatement3]
         
         for button in arrowButtonsArray {
-            button?.isEnabled = true
+            button?.isUserInteractionEnabled = true
         }
     }
     
@@ -207,11 +211,13 @@ class ViewController: UIViewController {
     
     func createStatementToLabel() {
         
+        // append to statement array for loops in other functions
         statementButtonsArray.append(statement1)
         statementButtonsArray.append(statement2)
         statementButtonsArray.append(statement3)
         statementButtonsArray.append(statement4)
         
+        // set title of statements
         statement1?.setTitle(player1?.statement, for: UIControlState.normal)
         statement2?.setTitle(player2?.statement, for: UIControlState.normal)
         statement3?.setTitle(player3?.statement, for: UIControlState.normal)
@@ -259,7 +265,7 @@ class ViewController: UIViewController {
     }
     
     func checkLabelToPoints() {
-        
+
         checkPoints()
 
         if checkedPoints == true {
@@ -359,16 +365,20 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func nextRoundAction(_ sender: UIButton) {
-        // check rounds
-        print("RandomArrayCheck")
-        print(statements.randomStatementArray)
-        countingRounds()
     
+    var segue = true
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        self.segue = true
+        if identifier == "playAgainSegue" {
+            countingRounds()
+        }
+        return segue
     }
     
-
+    
+    
     // MARK: Segues
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -381,7 +391,7 @@ class ViewController: UIViewController {
             urlView.showUrl(player: (player3?.player.rawValue)!)
         }else if segue.identifier == "statement4segue" {
             urlView.showUrl(player: (player4?.player.rawValue)!)
-        }
+        } 
     }
 }
 
