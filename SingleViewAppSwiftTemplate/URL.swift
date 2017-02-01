@@ -12,10 +12,15 @@ import UIKit
 class URLview: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webView: UIWebView!
     
+    var url = "https://www.nhl.com/player/sidney-crosby-8471675"
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        let requestURL = NSURL(string: url)
+        let request = NSURLRequest(url: requestURL! as URL)
+        webView.loadRequest(request as URLRequest)
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,8 +49,6 @@ class URLview: UIViewController, UIWebViewDelegate {
 
     func showUrl(player: String) {
         // Check enum with players from statement.swift
-        //webView.loadRequest(URLRequest(url: URL(string: "https://nhl.com/player/sidney-crosby-8471675")!))
-        
         
     }
     

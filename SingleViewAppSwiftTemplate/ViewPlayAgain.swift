@@ -9,21 +9,19 @@
 import Foundation
 import UIKit
 
+// Global variables
+var roundsFromView: Int = 0
+var pointsFromView: Int = 0
+
 class ViewPlayAgain: UIViewController {
-    
     @IBOutlet weak var score: UILabel!
-    
-    var roundsFromView: Int = 0
-    var pointsFromView: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        // show score and let the player decide if starting new play
-        // concatinating without divding the numbers
         showText()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,10 +34,10 @@ class ViewPlayAgain: UIViewController {
     }
     
     // must put figures in variables and letting viewdidload load before setting score.text value
-    func showScore(points: Int, rounds: Int) {
-        print("showScore")
+    func showScore(points: Int, rounds: Int){
         pointsFromView = points
         roundsFromView = rounds
+        // show score and let the player decide if starting new play
     }
     
      
@@ -49,6 +47,5 @@ class ViewPlayAgain: UIViewController {
     
     @IBAction func playAgain(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-
     }
 }

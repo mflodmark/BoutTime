@@ -96,6 +96,7 @@ class ViewController: UIViewController {
             // no segue for playAgainSegue
             segue = false
         } else {
+            // send points & rounds to func
             viewPlayAgain.showScore(points: pointsPerRound, rounds: countRounds)
             
             // restart counters
@@ -110,7 +111,6 @@ class ViewController: UIViewController {
         }
     }
 
-    
 
     
     func roundedCorners() {
@@ -159,7 +159,7 @@ class ViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCountdown), userInfo: nil, repeats: true)
         
         // Starting time
-        timeRemaining = 60
+        timeRemaining = 10
     }
     
     func timerCountdown() {
@@ -389,9 +389,9 @@ class ViewController: UIViewController {
             urlView.showUrl(player: (player2?.player.rawValue)!)
         } else if segue.identifier == "statement3segue" {
             urlView.showUrl(player: (player3?.player.rawValue)!)
-        }else if segue.identifier == "statement4segue" {
+        } else if segue.identifier == "statement4segue" {
             urlView.showUrl(player: (player4?.player.rawValue)!)
-        } 
+        }
     }
 }
 
